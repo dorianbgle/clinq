@@ -1,23 +1,19 @@
-import supabase from "@/lib/supabase";
-import { useState, useEffect } from "react";
-
-type MenuItem = {
-  id: number;
-  name: string;
-}
+import Auth from "@/clinq-components/layout-components/(layout-components)/Auth";
+import Footer from "@/clinq-components/layout-components/(layout-components)/Footer";
+import Header from "@/clinq-components/layout-components/(layout-components)/Header";
+import NavBar from "@/clinq-components/layout-components/(layout-components)/NavBar";
+import Link from "next/link";
 
 export default function Home() {
-  
-  const [menu, setMenu] = useState<MenuItem[]>([])
-  
-  return (
-    <main className="w-full h-full">
-    <div className=" ml-10 w-full ustify-center items-center">Penis</div>
-    
-    {menu.map((m) => (
-      <h1 key={m.id}>{m.name}</h1>
-    ))}
 
+  return (
+    <main className="w-full h-screen flex flex-col">
+    <title>ClinQ</title>
+    <header className="flex p-5 items-center text-3xl top-0"><Header/><Auth/></header>
+    <NavBar/> 
+      <Link href='/approach'>Approaches</Link>
+      <Link href='/specialty'>Specialty</Link>
+    <Footer/>
     </main>
   );
 }
