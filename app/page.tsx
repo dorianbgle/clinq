@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main className="w-full h-screen flex flex-col">
     <title>ClinQ</title>
-    <header className="flex p-5 items-center text-3xl top-0"><Header/><Auth/></header>
+    <header className="flex p-5 items-center text-3xl"><Header/><Auth/></header>
     <NavBar/> 
       <Link href='/approach'>Approaches</Link>
       <Link href='/specialty'>Specialty</Link>
