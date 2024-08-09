@@ -1,19 +1,28 @@
-import Auth from "@/clinq-components/layout-components/(layout-components)/Auth";
-import Footer from "@/clinq-components/layout-components/(layout-components)/Footer";
-import Header from "@/clinq-components/layout-components/(layout-components)/Header";
-import NavBar from "@/clinq-components/layout-components/(layout-components)/NavBar";
-import Link from "next/link";
+// import Footer from "@/components/clinq-components/(layout-components)/Footer";
+import { LandingPage } from "@/components/landing-page";
+import { Header } from "./(website)/components/header";
+import { Hero } from "./(website)/components/hero";
+import { SectionOne } from "./(website)/components/(homepage-components)/section-one";
+import { SectionTwo } from "./(website)/components/(homepage-components)/section-two";
+import { Screens } from "./(website)/components/(homepage-components)/screens";
+import { SectionThree } from "./(website)/components/(homepage-components)/section-three";
+import { SectionFour } from "./(website)/components/(homepage-components)/section-four";
 
 export default function Home() {
-
   return (
-    <main className="w-full h-screen flex flex-col">
-    <title>ClinQ</title>
-    <header className="flex p-5 items-center text-3xl"><Header/><Auth/></header>
-    <NavBar/> 
-      <Link href='/approach'>Approaches</Link>
-      <Link href='/specialty'>Specialty</Link>
-    <Footer/>
-    </main>
+    // <main className="h-screen flex flex-col glassmorphism">
+      <>
+        {/* <Header /> */}
+        <Hero />
+        <Screens />
+        <SectionOne />
+        <SectionTwo />
+        <SectionThree />
+        <SectionFour />
+{/* <LandingPage /> */}
+      {/* <Footer/> */}
+    {/* </main> */}
+</>
+      
   );
 }
