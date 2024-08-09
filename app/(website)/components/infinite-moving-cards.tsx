@@ -1,8 +1,9 @@
 "use client";
 
 import { cn } from "@/packages/lib/utils";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 
 export const InfiniteMovingCards = ({
   items,
@@ -12,6 +13,9 @@ export const InfiniteMovingCards = ({
   className,
 }: {
   items: {
+    handle: ReactNode;
+    verified: React.JSX.Element;
+    avatarUrl: string | StaticImport;
     quote: string;
     name: string;
     title: string;

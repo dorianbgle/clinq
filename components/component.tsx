@@ -26,6 +26,7 @@ To read more about using these font, please visit the Next.js documentation:
 import Link from "next/link"
 import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar"
 import { CardContent, Card } from "@/components/ui/card"
+import { JSX, SVGProps } from "react"
 
 export function Component() {
   return (
@@ -269,7 +270,7 @@ export function Component() {
   )
 }
 
-function HospitalIcon(props) {
+function HospitalIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -294,7 +295,7 @@ function HospitalIcon(props) {
 }
 
 
-function PuzzleIcon(props) {
+function PuzzleIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -314,7 +315,7 @@ function PuzzleIcon(props) {
 }
 
 
-function ScanIcon(props) {
+function ScanIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -337,7 +338,7 @@ function ScanIcon(props) {
 }
 
 
-function VideoIcon(props) {
+function VideoIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

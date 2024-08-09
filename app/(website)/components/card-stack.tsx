@@ -30,7 +30,7 @@ export const CardStack = ({
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const CARD_OFFSET = isDesktop ? 10 : 5;
   const SCALE_FACTOR = scaleFactor || 0.06;
-  const [cards, setCards] = useState<Card[]>([items.at(0)]);
+  const [cards, setCards] = useState<Card[]>(items.length > 0 ? [items[0]] : []);
 
   useEffect(() => {
     startFlipping();
@@ -49,14 +49,18 @@ export const CardStack = ({
     }, 5000);
   };
 
-  const onChangeCardByIndex = (index) => {
-    const item = cards.at(index);
-    setCards([item, ...cards.slice(0, index), ...cards.slice(index + 1)]);
+  const onChangeCardByIndex = (index: number | undefined) => {
+    if (index !== undefined) {
+      const item = cards[index];
+      setCards([item, ...cards.slice(0, index), ...cards.slice(index + 1)]);
+    }
   };
 
-  const onChangeCard = (item) => {
+  const onChangeCard = (item: any) => {
     const index = cards.findIndex((card) => card.id === item.id);
-    setCards([item, ...cards.slice(0, index), ...cards.slice(index + 1)]);
+    if (index !== -1) {
+      setCards([item, ...cards.slice(0, index), ...cards.slice(index + 1)]);
+    }
   };
 
   // TODO: Get screen width
@@ -68,23 +72,25 @@ export const CardStack = ({
       {cards.map((card, index) => {
         return (
           <motion.div
-            key={card.id}
-            className="absolute h-[220px] md:h-[670px] w-[331px] md:w-[1031px] flex flex-col justify-between"
-            style={{
-              transformOrigin: "top center",
-              display: index > 2 ? "none" : "block",
-            }}
-            whileHover={{
-              top: index > 0 && index > 0 && index * -CARD_OFFSET - 30,
-              transition: { duration: 0.3 },
-            }}
-            animate={{
-              top: index * -CARD_OFFSET,
-              scale: 1 - index * SCALE_FACTOR, // decrease scale for cards that are behind
-              zIndex: cards.length - index, //  decrease z-index for the cards that are behind
-            }}
-            onMouseEnter={() => clearInterval(interval)}
-          >
+  key={card.id}
+  className="absolute h-[220px] md:h-[670px] w-[331px] md:w-[1031px] flex flex-col justify-between"
+  style={{
+    transformOrigin: "top center",
+    display: index > 2 ? "none" : "block",
+  }}
+  whileHover={{
+    y: index > 0 ? -30 : 0, // Example hover effect
+    transition: { duration: 0.3 },
+  }}
+  animate={{
+    top: index * -CARD_OFFSET,
+    scale: 1 - index * SCALE_FACTOR,
+    zIndex: cards.length - index,
+  }}
+  onMouseEnter={() => {
+    if (interval) clearInterval(interval);
+  }}
+>
             <TooltipProvider delayDuration={0}>
               <Tooltip>
                 <TooltipTrigger asChild>
