@@ -7,7 +7,7 @@ export function SectionThree() {
       <div className="border border-border container bg-[#121212] p-8 md:p-10 md:pb-0 overflow-hidden">
         <div className="flex flex-col md:space-x-12 md:flex-row">
           <div className="mt-6 md:max-w-[40%] md:mr-8 md:mb-8">
-            <h3 className="font-medium text-xl md:text-2xl	mb-4">Checklists</h3>
+            <h3 className="font-medium text-xl md:text-2xl	mb-4">Comprehensive Checklists</h3>
 
             <p className="text-[#878787] mb-4 text-sm">
               Our Checklists provide students with comprehensive, easy-to-follow

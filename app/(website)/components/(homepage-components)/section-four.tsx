@@ -24,7 +24,7 @@ export function SectionFour() {
       </div>
 
       <div className="border border-border md:basis-2/3 bg-[#121212] p-10 flex justify-between md:space-x-8 md:flex-row flex-col">
-        <div className="flex flex-col md:basis-1/2">s
+        <div className="flex flex-col md:basis-1/2">
           <h4 className="font-medium text-xl md:text-2xl mb-4">Long Cases</h4>
 
           <p className="text-[#878787] mb-4 text-sm">
