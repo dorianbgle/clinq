@@ -56,9 +56,9 @@ const Sidebar = () => {
 
   return (
     <>
-    <div className="py-2">
+    <Link className="py-2" href={"/"}>
     <PiApertureDuotone className="h-11 w-11"/>
-    </div>
+    </Link>
     <hr className="w-10"/>
       {sideLinks.map(({ path, id, icon, name }) => {
         const Icon = icon;
