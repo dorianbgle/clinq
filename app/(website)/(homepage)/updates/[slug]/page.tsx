@@ -16,6 +16,8 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({
   params,
+}: {
+  params: { slug: string };
 }): Promise<Metadata | undefined> {
   const post = getBlogPosts().find((post) => post.slug === params.slug);
   if (!post) {
@@ -40,7 +42,7 @@ export async function generateMetadata({
       url: `${baseUrl}/blog/${post.slug}`,
       images: [
         {
-          url: image,
+          url: image ?? "", // Add nullish coalescing operator to provide a default value
         },
       ],
     },
@@ -48,7 +50,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [image],
+      images: [image ?? ""],
     },
   };
 }
