@@ -17,10 +17,10 @@ export function FooterCTA() {
         Study smarter with ClinQ.
       </span>
       <p className="text-[#878787] mt-6">
-        An all-in-one tool for freelancers, contractors, consultants, and micro
+        An all-in-one tool for medical students, interns and allied health,
         <br />
-        businesses to manage their finances, track projects, store files, and
-        send invoices.
+        to simulate real-world medical scenarios, build clinical acumen and
+        perform better.
       </p>
 
       <div className="mt-10 md:mb-8">

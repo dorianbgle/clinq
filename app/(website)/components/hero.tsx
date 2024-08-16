@@ -51,7 +51,7 @@ export function Hero() {
 
         <h1 className="text-[30px] md:text-[90px] font-medium mt-6 leading-none">
           Creating first-class
-          <br /> physicians.
+          <br /> physicians
         </h1>
 
         <p className="mt-4 md:mt-6 max-w-[600px] text-[#878787]">
