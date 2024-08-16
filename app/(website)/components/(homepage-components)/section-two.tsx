@@ -16,15 +16,15 @@ export function SectionTwo() {
 
         <div className="mt-6 md:max-w-[40%] md:ml-8 md:mb-8 flex flex-col justify-center p-8 md:p-0">
           <h3 className="font-medium text-xl md:text-2xl mb-4">
-            Financial overview
+            Understanding the Symptom
           </h3>
 
-        <p className="text-[#878787] mb-4 text-sm">
-            Bring your own bank. We connect to over 20 000+ banks in 33
-            countries across US, Canada, UK and Europe. Keep tabs on your
-            expenses and income, and gain a clearer picture of your business&apos;s
-            financial track record and current situation.
-        </p>
+          <p className="text-[#878787] mb-4 text-sm">
+            ClinQ encourages students to start from the symptom. Our Approach to
+            Symptoms has been crafted with all the latest information from the
+            World&apos;s leading journals and textbooks. Our Approaches are
+            verified by world-leading consultants with decades of experience.
+          </p>
 
           <div className="flex space-x-2 items-center mt-8">
             <svg
@@ -39,7 +39,7 @@ export function SectionTwo() {
               />
             </svg>
             <span className="text-[#878787] text-sm">
-              Share financial reports
+             Evidence-based Approach
             </span>
           </div>
         </div>
