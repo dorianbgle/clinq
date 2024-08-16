@@ -1,18 +1,33 @@
-import { getBlogPosts } from "../packages/lib/blog";
-import type { MetadataRoute } from "next";
+// import { getBlogPosts } from "../packages/lib/blog";
+// import type { MetadataRoute } from "next";
 
-export const baseUrl = "https://locahost:3000/";
+// export const baseUrl = "https://localhost:3000/";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const blogs = getBlogPosts().map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: post.metadata.publishedAt,
-  }));
+// export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+//   const blogs = getBlogPosts().map((post) => ({
+//     url: `${baseUrl}/blog/${post.slug}`,
+//     lastModified: post.metadata.publishedAt,
+//   }));
 
-  const routes = ["", "/blog"].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date().toISOString().split("T")[0],
-  }));
+//   const routes = ["", "/blog"].map((route) => ({
+//     url: `${baseUrl}${route}`,
+//     lastModified: new Date().toISOString().split("T")[0],
+//   }));
 
-  return [...routes, ...blogs];
+//   return [...routes, ...blogs];
+// }
+
+
+// Really cool function, maybe generate later on. 
+
+import React from 'react'
+
+const Sitemap = () => {
+  return (
+    <div>
+      Penis
+    </div>
+  )
 }
+
+export default Sitemap
