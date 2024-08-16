@@ -4,12 +4,12 @@ import Link from "next/link";
 import React from "react";
 import { highlight } from "sugar-high";
 
-function Table({ data }) {
-  const headers = data.headers.map((header, index) => (
+function Table({ data }: { data: any }) {
+  const headers = data.headers.map((header: string | number | bigint | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<React.AwaitedReactNode> | null | undefined, index: React.Key | null | undefined) => (
     <th key={index}>{header}</th>
   ));
 
-  const rows = data.rows.map((row, index) => (
+  const rows = data.rows.map((row: any[], index: React.Key | null | undefined) => (
     <tr key={index}>
       {row.map((cell, cellIndex) => (
         <td key={cellIndex}>{cell}</td>
@@ -27,7 +27,7 @@ function Table({ data }) {
   );
 }
 
-function CustomLink(props) {
+function CustomLink(props: any) {
   const href = props.href;
 
   if (href.startsWith("/")) {
@@ -45,16 +45,16 @@ function CustomLink(props) {
   return <a target="_blank" rel="noopener noreferrer" {...props} />;
 }
 
-function RoundedImage(props) {
+function RoundedImage(props: any) {
   return <Image alt={props.alt} {...props} />;
 }
 
-function Code({ children, ...props }) {
+function Code({ children, ...props }: any) {
   const codeHTML = highlight(children);
   return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
 }
 
-function slugify(str) {
+function slugify(str: any) {
   return str
     .toString()
     .toLowerCase()
@@ -65,8 +65,8 @@ function slugify(str) {
     .replace(/\-\-+/g, "-"); // Replace multiple - with single -
 }
 
-function createHeading(level) {
-  const Heading = ({ children }) => {
+function createHeading(level: number) {
+  const Heading = ({ children }: { children: React.ReactNode }) => {
     const slug = slugify(children);
 
     return React.createElement(
@@ -101,7 +101,7 @@ const components = {
   Table,
 };
 
-export function CustomMDX(props) {
+export function CustomMDX(props: React.PropsWithChildren<any>) {
   return (
     <MDXRemote
       {...props}
