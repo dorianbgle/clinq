@@ -25,13 +25,13 @@ export default function DashBoard() {
             <UserData />
           </Suspense>
         </p>
-        <div className="">
+        {/* <div className="">
           <blockquote className="italic">
             <Suspense fallback={<div>Loading FactDisplay...</div>}>
               <FactDisplay />
             </Suspense>
           </blockquote>
-        </div>
+        </div> */}
       </article>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
