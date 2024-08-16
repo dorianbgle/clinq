@@ -62,7 +62,7 @@ export function Hero() {
 
         <div className="mt-8">
           <div className="flex items-center space-x-4">
-            <Link href="/">
+            <Link href="/dashboard">
               <Button
                 variant="outline"
                 className="border border-primary h-12 px-6"
@@ -71,7 +71,7 @@ export function Hero() {
               </Button>
             </Link>
 
-            <a href="/">
+            <a href="/dashboard">
               <Button className="h-12 px-5">Get Started</Button>
             </a>
           </div>
