@@ -121,7 +121,7 @@ export function Footer() {
         </div>
       </div>
 
-      <h5 className="text-[#161616] text-3xl leading-none text-center pointer-events-none font-bold">
+      <h5 className="text-[#161616] text-[500px] leading-none text-center pointer-events-none font-bold">
         ClinQ
       </h5>
     </footer>
