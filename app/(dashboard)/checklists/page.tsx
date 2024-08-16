@@ -4,10 +4,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useState, Suspense, lazy } from "react";
 
 // Lazy load components
-const FoundationalChecklists = lazy(
-  () => import("../components/foundationalChecklists")
-);
-const ChecklistDisplay = lazy(() => import("../components/checklistDisplay"));
+const FoundationalPES = lazy(() => import("../components/foundationalPES"));
+const FoundationalHx = lazy(() => import("../components/foundationalHx"));
+const SpecialisedHx = lazy(() => import("../components/specialisedHx"));
+const SpecialisedPES = lazy(() => import("../components/specialisedPES"));
 
 const SkeletonLoader = () => {
   return (
@@ -21,7 +21,7 @@ const SkeletonLoader = () => {
 
 const Checklists = () => {
   const [selectedChecklist, setSelectedChecklist] = useState<string | null>(
-    "foundational"
+    "foundationalHx"
   );
 
   // Memoized click handler
@@ -39,33 +39,56 @@ const Checklists = () => {
         </h3>
       </header>
 
-      <div className="flex text-zinc-500 w-full md:w-1/3 border p-1 rounded-xl">
-        <button
-          className={`flex-1 p-2 py-1 rounded-l-xl ${
-            selectedChecklist === "foundational"
-              ? "bg-zinc-800/90 border border-zinc-500"
-              : "border"
-          }`}
-          onClick={() => handleButtonClick("foundational")}
-        >
-          Foundational Checklists
-        </button>
-        <button
-          className={`flex-1 p-2 py-1 rounded-r-xl ${
-            selectedChecklist === "specialised"
-              ? "bg-zinc-800/90 border border-zinc-500"
-              : "border"
-          }`}
-          onClick={() => handleButtonClick("specialised")}
-        >
-          Specialised Checklists
-        </button>
-      </div>
+      <div className="grid grid-cols-2 gap-1 w-full border p-1 rounded-xl md:grid-cols-4 text-zinc-500">
+  <button
+    className={`p-2 py-1 rounded-tl-xl md:rounded-l-xl ${
+      selectedChecklist === "foundationalHx"
+        ? "bg-zinc-800/60 border border-zinc-500"
+        : "border"
+    }`}
+    onClick={() => handleButtonClick("foundationalHx")}
+  >
+    Foundational Hx
+  </button>
+  <button
+    className={`p-2 py-1 rounded-tr-xl md:rounded-none ${
+      selectedChecklist === "foundationalPES"
+        ? "bg-zinc-800/60 border border-zinc-500"
+        : "border"
+    }`}
+    onClick={() => handleButtonClick("foundationalPES")}
+  >
+    Foundational PES
+  </button>
+  <button
+    className={`p-2 py-1 rounded-bl-xl md:rounded-none ${
+      selectedChecklist === "specialisedHx"
+        ? "bg-zinc-800/60 border border-zinc-500"
+        : "border"
+    }`}
+    onClick={() => handleButtonClick("specialisedHx")}
+  >
+    Specialised Hx
+  </button>
+  <button
+    className={`p-2 py-1 rounded-br-xl md:rounded-r-xl ${
+      selectedChecklist === "specialisedPES"
+        ? "bg-zinc-800/60 border border-zinc-500"
+        : "border"
+    }`}
+    onClick={() => handleButtonClick("specialisedPES")}
+  >
+    Specialised PES
+  </button>
+</div>
+
 
       <div className="flex flex-col py-8">
         <Suspense fallback={<SkeletonLoader />}>
-          {selectedChecklist === "foundational" && <FoundationalChecklists />}
-          {selectedChecklist === "specialised" && <ChecklistDisplay />}
+          {selectedChecklist === "foundationalHx" && <FoundationalHx />}
+          {selectedChecklist === "foundationalPES" && <FoundationalPES />}
+          {selectedChecklist === "specialisedHx" && <SpecialisedHx />}
+          {selectedChecklist === "specialisedPES" && <SpecialisedPES />}
         </Suspense>
       </div>
     </main>

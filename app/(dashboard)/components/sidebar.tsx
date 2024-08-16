@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { IoHomeSharp } from "react-icons/io5";
 import { GoBriefcase } from "react-icons/go";
-import { FaMicroscope, FaRegListAlt } from "react-icons/fa";
 import { FaBookOpen } from "react-icons/fa6";
 import { FaUserDoctor } from "react-icons/fa6";
 import { MdOutlineChecklist } from "react-icons/md";
@@ -14,7 +13,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { IoBody } from "react-icons/io5";
+import { PiApertureDuotone } from "react-icons/pi";
 
 const sideLinks = [
   {
@@ -28,18 +27,6 @@ const sideLinks = [
     path: "/approaches",
     icon: FaBookOpen,
     id: 2,
-  },
-  {
-    name: "Technique",
-    path: "/physicalexamination",
-    icon: IoBody,
-    id: 3,
-  },
-  {
-    name: "Interpretation",
-    path: "/interpretation",
-    icon: FaMicroscope,
-    id: 4,
   },
   {
     name: "Checklists",
@@ -69,6 +56,9 @@ const Sidebar = () => {
 
   return (
     <>
+    <div className="py-2">
+    <PiApertureDuotone className="h-11 w-11"/>
+    </div>
       {sideLinks.map(({ path, id, icon, name }) => {
         const Icon = icon;
         return (
@@ -79,11 +69,11 @@ const Sidebar = () => {
                   href={`${path}`}
                   className={
                     checkActivePath(path)
-                      ? "bg-zinc-900 p-4 border-zinc-600 border relative rounded-xl active:scale-90"
-                      : " p-4 hover:bg-zinc-900 border-zinc-600 hover:border relative rounded-xl active:scale-90"
+                      ? "bg-zinc-800/80 p-3 border-zinc-700 border relative active:scale-90 items-center flex justify-center"
+                      : " p-3 hover:bg-zinc-800/80 border-zinc-700 hover:border relative active:scale-90"
                   }
                 >
-                  <Icon />
+                  <Icon className="h-4 w-4"/>
                 </Link>
               </TooltipTrigger>
               <TooltipContent className="absolute left-8 top-3">

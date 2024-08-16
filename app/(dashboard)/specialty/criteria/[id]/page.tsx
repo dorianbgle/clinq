@@ -67,7 +67,7 @@ export default function Case({ params: { id } }: { params: { id: string } }) {
           cases.map((c) => (
             <section key={c.id} className="lg:w-2/3 border">
               <p className="space-y-5 rounded-3xl">
-                {c.casejson.clinical_pearls && (
+                
                   <>
                     <section className="dotted-bg p-8 flex items-center gap-2 border">
                       <Link href={`/specialty/preview/${id}`}>
@@ -86,7 +86,8 @@ export default function Case({ params: { id } }: { params: { id: string } }) {
                       >
                         View the Patient Script
                       </Link>
-
+                      
+                      {c.casejson.clinical_pearls && (
                       <table className="overflow-x-auto border w-full table-fixed">
                         <tbody className="border w-full">
                           {c.markingtablejson.map((i: any, index: number) => (
@@ -108,9 +109,10 @@ export default function Case({ params: { id } }: { params: { id: string } }) {
                           </tr>
                         </tbody>
                       </table>
+                      )}
                     </section>
                   </>
-                )}
+                
 
                 <section className="px-10 py-5">
                 <Accordion type="single" collapsible defaultValue="item-1">

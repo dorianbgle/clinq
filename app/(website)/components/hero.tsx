@@ -62,7 +62,7 @@ export function Hero() {
 
         <div className="mt-8">
           <div className="flex items-center space-x-4">
-            <Link href="/talk-to-us">
+            <Link href="/">
               <Button
                 variant="outline"
                 className="border border-primary h-12 px-6"
@@ -71,7 +71,7 @@ export function Hero() {
               </Button>
             </Link>
 
-            <a href="https://app.midday.ai">
+            <a href="/">
               <Button className="h-12 px-5">Get Started</Button>
             </a>
           </div>
@@ -86,7 +86,10 @@ export function Hero() {
         </p>
       </div>
 
-      <div className="scale-50 md:scale-100 -top-[500px] -right-[380px] pointer-events-none transform-gpu grayscale md:flex lg:animate-[open-scale-up-fade_1.5s_ease-in-out] absolute md:-right-[200px] xl:-right-[100px] w-auto h-auto md:-top-[200px]">
+
+      {/* Consider importing later on */}
+
+      {/* <div className="scale-50 md:scale-100 -top-[500px] -right-[380px] pointer-events-none transform-gpu grayscale md:flex lg:animate-[open-scale-up-fade_1.5s_ease-in-out] absolute md:-right-[200px] xl:-right-[100px] w-auto h-auto md:-top-[200px]">
         <div className={cn(isPlaying && "animate-webgl-scale-in-fade")}>
           {isPlaying && (
             <Spline
@@ -99,7 +102,7 @@ export function Hero() {
             />
           )}
         </div>
-      </div>
+      </div> */}
     </motion.section>
   );
 }

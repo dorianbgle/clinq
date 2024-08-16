@@ -15,9 +15,9 @@ const DashboardDisplay = () => {
 
   return (
     <>
-      <span className="flex w-full select-none">
+      <>
         <Link
-          className="flex flex-col p-5 pl-14 border h-72 justify-end items-end bg-gradient-to-r from-black to-zinc-900 gap-2 hover:border-zinc-600 delay-300 duration-150 ease-in-out"
+          className="flex flex-col p-5 pl-14 border-2 h-72 justify-end items-end bg-gradient-to-r from-black to-zinc-900 gap-2 hover:border-zinc-600 delay-300 duration-150 ease-in-out"
           href={"/approaches"}
         >
           <h2 className="text-2xl flex items-center">
@@ -36,7 +36,7 @@ const DashboardDisplay = () => {
             </figure>
         ))}
         </aside> */}
-      </span>
+      </>
     </>
   );
 };

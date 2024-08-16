@@ -3,13 +3,14 @@ import Link from "next/link";
 import { IoIosReturnRight } from "react-icons/io";
 
 export const revalidate = 60
-const FoundationalChecklists = async () => {
+const FoundationalPES = async () => {
 
-  const { data: checklists } = await supabase
-        .from("checklists")
-        .select("checklist_name, id")
-        .eq("isBasicChecklist", true)
-        .order("checklist_name", { ascending: true });
+  const { data: checklists, error } = await supabase
+  .from("checklists")
+  .select("checklist_name, id")
+  .eq("isBasicChecklist", true)
+  .eq("isPES", true)  // Adding the filter for isPES
+  .order("checklist_name", { ascending: true });
 
   return (
     <>
@@ -30,4 +31,4 @@ const FoundationalChecklists = async () => {
   );
 };
 
-export default FoundationalChecklists;
+export default FoundationalPES;

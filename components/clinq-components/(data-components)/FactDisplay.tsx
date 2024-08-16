@@ -35,14 +35,14 @@ const FactDisplay = () => {
 
   return (
     <>
-      {fact &&
+      {/* {fact &&
         fact.map((f) => (
-          <p key={f.id} className="text-justify md:visible text-sm md:text-base">
+          <p key={f.id} className="text-justify md:visible text-sm md:text-base text-zinc-500 bg-zinc-950 p-3 rounded-lg hover:visible invisible">
             {`"`}
             {f.fact_content}
             {`"`}
           </p>
-        ))}
+        ))} */}
     </>
   );
 };

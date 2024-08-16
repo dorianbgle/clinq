@@ -10,6 +10,18 @@ import {
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
+
+// Find cause of error. 
+// 2 objects present - Interval and Card. Three objects passed into component - items, offset and scaleFactor. 
+// Various objects defined within function. isDesktop, CARD_OFFSET, SCALE_FACTOR and the state cards. 
+// Each card has an id, content and array. The state cards is an array of the card. 
+// On render, the startFlipping() function is called and state is called which sets the cards tp the items. 
+// Follow up where these objects/attributes are passed down from. 
+// 3 main functions are defined within the function. startFlipping(), onChangeCardIndex() and onChangeCard().
+// Use ChatGPT to explain some of these lines of code. Make a simplified version of the code. 
+// Pay anttention to Overview, Transactions, Inbox, Tracker and Vault.
+// Answer where does this component fit in - it is exported into the page.tsx file but has all of these components. 
+
 let interval: any;
 
 type Card = {
@@ -30,14 +42,16 @@ export const CardStack = ({
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const CARD_OFFSET = isDesktop ? 10 : 5;
   const SCALE_FACTOR = scaleFactor || 0.06;
-  const [cards, setCards] = useState<Card[]>(items.length > 0 ? [items[0]] : []);
+  const [cards, setCards] = useState<Card[]>(
+    items.length > 0 ? [items[0]] : []
+  );
 
   useEffect(() => {
     startFlipping();
     setCards(items);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [items]);
 
   const startFlipping = () => {
     interval = setInterval(() => {
@@ -63,7 +77,6 @@ export const CardStack = ({
     }
   };
 
-  // TODO: Get screen width
   return (
     <div
       className="relative h-[220px] md:h-[670px] w-[331px] md:w-[1031px] z-10"
@@ -72,25 +85,25 @@ export const CardStack = ({
       {cards.map((card, index) => {
         return (
           <motion.div
-  key={card.id}
-  className="absolute h-[220px] md:h-[670px] w-[331px] md:w-[1031px] flex flex-col justify-between"
-  style={{
-    transformOrigin: "top center",
-    display: index > 2 ? "none" : "block",
-  }}
-  whileHover={{
-    y: index > 0 ? -30 : 0, // Example hover effect
-    transition: { duration: 0.3 },
-  }}
-  animate={{
-    top: index * -CARD_OFFSET,
-    scale: 1 - index * SCALE_FACTOR,
-    zIndex: cards.length - index,
-  }}
-  onMouseEnter={() => {
-    if (interval) clearInterval(interval);
-  }}
->
+            key={card.id}
+            className="absolute h-[220px] md:h-[670px] w-[331px] md:w-[1031px] flex flex-col justify-between"
+            style={{
+              transformOrigin: "top center",
+              display: index > 2 ? "none" : "block",
+            }}
+            whileHover={{
+              y: index > 0 ? -30 : 0, // Example hover effect
+              transition: { duration: 0.3 },
+            }}
+            animate={{
+              top: index * -CARD_OFFSET,
+              scale: 1 - index * SCALE_FACTOR,
+              zIndex: cards.length - index,
+            }}
+            onMouseEnter={() => {
+              if (interval) clearInterval(interval);
+            }}
+          >
             <TooltipProvider delayDuration={0}>
               <Tooltip>
                 <TooltipTrigger asChild>

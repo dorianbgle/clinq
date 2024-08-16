@@ -12,7 +12,7 @@ const CaseFiles = async () => {
   return (
     <>
       <span className="p-5 gap-5 w-2/3 relative select-none">
-        <h1 className="text-2xl">Long Case Files</h1>
+        <h1 className="text-2xl">Long Stay Patient Files</h1>
         <h3 className="text-zinc-500">
           This section is designed to expose students to the complexities of
           medicine and encourage them to think of appropriate steps to take in
@@ -25,7 +25,7 @@ const CaseFiles = async () => {
           case_files.map((i: any, index) => (
             <>
               <Link
-                className="h-28 border group dotted-bg hover:border-zinc-400 text-zinc-500 p-5 flex flex-col justify-center text-3xl font-light active:scale-90"
+                className="h-28 border group dotted-bg hover:border-zinc-400 text-zinc-500 p-5 flex flex-col justify-center text-3xl font-light active:ml-3"
                 key={index}
                 href={`/cases/files/${i.id}`}
               >

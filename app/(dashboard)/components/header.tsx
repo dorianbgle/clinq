@@ -9,6 +9,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import supabase from "@/packages/lib/supabase/client";
+import { RxAvatar } from "react-icons/rx";
 
 export const revalidate = 60
 
@@ -43,7 +44,7 @@ export async function Header() {
             </SheetHeader>
           </SheetContent>
         </Sheet>
-        <span className="rounded-full bg-green-500/80 py-1 px-3">D</span>
+        <RxAvatar className="h-7 w-7" /> 
       </section>
     </header>
   );
