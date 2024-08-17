@@ -84,9 +84,7 @@ export function Footer() {
 
           <div className="md:w-6/12 flex mt-8 md:mt-0 md:justify-end">
             <div className="flex md:items-end flex-col">
-              {/* <div className="flex items-start md:items-center flex-col md:flex-row space-y-6 md:space-y-0 mb-8">
-                <SocialLinks />
-              </div> */}
+
 
               <div className="mb-8">
                 <SubscribeInput group="news" />

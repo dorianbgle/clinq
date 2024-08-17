@@ -7,7 +7,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 export const revalidate = 60;
 
 export default async function Checklists({
-  params: { id }, 
+  params: { id },
 }: {
   params: { id: string };
 }) {
@@ -28,7 +28,10 @@ export default async function Checklists({
             symptoms?.map(({ checklist_name, checklistjson }) => (
               <>
                 <h1 className="pt-10 w-full flex gap-3 items-center dotted-bg p-4 text-3xl lg:text-4xl xl:text-5xl">
-                  <Link href={"/checklists"} className="w-8 h-8 flex items-center">
+                  <Link
+                    href={"/checklists"}
+                    className="w-8 h-8 flex items-center"
+                  >
                     <FaArrowLeftLong className="hover:text-zinc-800 h-5 w-5" />
                   </Link>
                   {checklist_name} Checklist
@@ -52,7 +55,9 @@ export default async function Checklists({
                                   {i?.subheading}
                                 </td>
                                 <td className="p-5 border">
-                                  <Markdown className={style.reactMarkDown}>{i?.content}</Markdown>
+                                  <Markdown className={style.reactMarkDown}>
+                                    {i?.content}
+                                  </Markdown>
                                 </td>{" "}
                               </>
                             </tr>

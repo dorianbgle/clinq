@@ -1,7 +1,7 @@
 import { Header } from "./components/header";
 import { Metadata } from "next/types";
 import Sidebar from "./components/sidebar";
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/app/(dashboard)/components/theme-provider"
 import { IoExitSharp } from "react-icons/io5";
 
 export const metadata: Metadata = {

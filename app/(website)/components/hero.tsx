@@ -56,8 +56,8 @@ export function Hero() {
 
         <p className="mt-4 md:mt-6 max-w-[600px] text-[#878787]">
           An all-in-one tool for medical students, interns, registrars, and
-          allied health to simulate real-world medical scenarios, build clinical acumen,
-        and perform better.
+          allied health to simulate real-world medical scenarios, build clinical
+          acumen, and perform better.
         </p>
 
         <div className="mt-8">
@@ -78,14 +78,13 @@ export function Hero() {
         </div>
 
         <p className="text-xs text-[#707070] mt-8 font-mono">
-          Used by {" "}
+          Used by{" "}
           <Link href="/open-startup" prefetch>
             <span className="underline">internationally</span>
           </Link>{" "}
           recognised medical schools.
         </p>
       </div>
-
 
       {/* Consider importing later on */}
 

@@ -310,8 +310,6 @@ img::selection {
   }
 }
 
-
-
 @layer base {
   * {
     @apply border-border;
