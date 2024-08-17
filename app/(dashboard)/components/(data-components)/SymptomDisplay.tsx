@@ -96,18 +96,18 @@ const SymptomDisplay = () => {
             <Skeleton className="h-4 w-[200px] rounded-full" />
           </div>
         )}
-       {displayedResults &&
-      displayedResults.map((s, index) => (
-        <Link
-          href={`/approaches/${s.id}`}
-          key={s.id}
-          className={`hover:bg-zinc-800/20 py-3 border-b items-center hover:border-zinc-500 hover:text-zinc-300 w-full flex justify-center rounded-lg border-zinc-800 hover:border text-zinc-500 active:ml-5 ${
-            index % 2 === 1 ? 'bg-zinc-950' : ''
-          }`}
-        >
-          <p>{s.title}</p>
-        </Link>
-      ))}
+        {displayedResults &&
+          displayedResults.map((s, index) => (
+            <Link
+              href={`/approaches/${s.id}`}
+              key={s.id}
+              className={`hover:bg-zinc-800/20 py-3 border-b items-center hover:border-zinc-500 hover:text-zinc-300 w-full flex justify-center rounded-lg border-zinc-800 hover:border text-zinc-500 active:ml-5 ${
+                index % 2 === 1 ? "bg-zinc-950" : ""
+              }`}
+            >
+              <p>{s.title}</p>
+            </Link>
+          ))}
         {displayedResults?.length === 0 ? (
           <h3 className="text-xl text-zinc-500 p-10">No results found</h3>
         ) : (

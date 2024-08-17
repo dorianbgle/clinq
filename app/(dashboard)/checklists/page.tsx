@@ -4,10 +4,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useState, Suspense, lazy } from "react";
 
 // Lazy load components
-const FoundationalPES = lazy(() => import("../components/foundationalPES"));
-const FoundationalHx = lazy(() => import("../components/foundationalHx"));
-const SpecialisedHx = lazy(() => import("../components/specialisedHx"));
-const SpecialisedPES = lazy(() => import("../components/specialisedPES"));
+const FoundationalPES = lazy(() => import("../components/(checklist-components)/foundationalPES"));
+const FoundationalHx = lazy(() => import("../components/(checklist-components)/foundationalHx"));
+const SpecialisedHx = lazy(() => import("../components/(checklist-components)/specialisedHx"));
+const SpecialisedPES = lazy(() => import("../components/(checklist-components)/specialisedPES"));
 
 const SkeletonLoader = () => {
   return (
