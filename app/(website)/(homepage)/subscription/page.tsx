@@ -3,7 +3,7 @@ import PricingPage from "@/components/clinq-components/(action-component)/Pricin
 const Page = () => {
   return (
     <div>
-      Description of the Subscription
+      Test Subscription Component from Stripe
       <PricingPage />
     </div>
   );

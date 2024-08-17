@@ -3,7 +3,6 @@
 import { SubscribeInput } from "./subscribe-input";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { SocialLinks } from "./social-links";
 import { StatusWidget } from "./(homepage-components)/status-widget";
 
 export function Footer() {

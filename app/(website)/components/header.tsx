@@ -171,7 +171,6 @@ export function Header() {
         <ContextMenu>
           <ContextMenuTrigger>
             <Link href="/">
-              <span className="sr-only">Midday Logo</span>
               <Link
                 className="text-4xl p-3 bg-gradient-to-r from-cyan-200 via-cyan-400 to-cyan-200 inline-block text-transparent bg-clip-text font-medium"
                 href={"/"}
