@@ -93,8 +93,8 @@ export default async function Case({
                   </header>
                 </section>
               ) : (
-                <div className="items-center flex justify-center p-10">
-                  <section className="flex items-center justify-center w-2/3 p-10 text-red-700 bg-red-800/20 border border-red-700 gap-5 rounded-xl">
+                <div className="items-center flex justify-center p-10 w-full">
+                  <section className="flex items-center justify-center sm:w-2/3 w-full p-10 text-red-700 bg-red-800/20 border border-red-700 gap-5 rounded-xl">
                     <Link
                       href={`/specialty/` + `${c?.specialty_name}`}
                       className="active:scale-90"
