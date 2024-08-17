@@ -1,4 +1,4 @@
-import SpecialtyDisplay from "@/components/clinq-components/(data-components)/SpecialtyDisplay";
+import SpecialtyDisplay from "@/app/(dashboard)/components/(data-components)/SpecialtyDisplay";
 
 const Page = () => {
   return <SpecialtyDisplay />;

@@ -1,9 +1,8 @@
 import { Suspense, lazy } from "react";
 import { FaArrowTrendUp } from "react-icons/fa6";
 
-const FactDisplay = lazy(() => import("@/components/clinq-components/(data-components)/FactDisplay"));
-const DashboardDisplay = lazy(() => import("@/components/clinq-components/(data-components)/DashboardDisplay"));
-const UserData = lazy(() => import("@/components/clinq-components/(data-components)/UserData"));
+const DashboardDisplay = lazy(() => import("@/app/(dashboard)/components/(data-components)/DashboardDisplay"));
+const UserData = lazy(() => import("@/app/(dashboard)/components/(data-components)/UserData"));
 
 export default function DashBoard() {
   return (

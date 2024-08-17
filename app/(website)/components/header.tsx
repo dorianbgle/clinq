@@ -172,7 +172,7 @@ export function Header() {
           <ContextMenuTrigger>
             <Link href="/">
               <Link
-                className="text-4xl p-3 bg-gradient-to-r from-cyan-200 via-cyan-400 to-cyan-200 inline-block text-transparent bg-clip-text font-medium"
+                className="text-4xl p-3 bg-gradient-to-r from-zinc-200 via-zinc-400 to-zinc-200 inline-block text-transparent bg-clip-text font-medium"
                 href={"/"}
               >
                 ClinQ

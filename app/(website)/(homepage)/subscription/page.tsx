@@ -1,4 +1,4 @@
-import PricingPage from "@/components/clinq-components/(action-component)/PricingTable";
+import PricingPage from "@/components/pricing-components/(action-component)/PricingTable";
 
 const Page = () => {
   return (

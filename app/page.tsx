@@ -7,11 +7,15 @@ import { SectionTwo } from "./(website)/components/(homepage-components)/section
 import { Screens } from "./(website)/components/(homepage-components)/screens";
 import { SectionThree } from "./(website)/components/(homepage-components)/section-three";
 import { SectionFour } from "./(website)/components/(homepage-components)/section-four";
+import Head from "next/head";
 
 export default function Home() {
   return (
     // <main className="h-screen flex flex-col glassmorphism">
       <>
+                  <Head>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
         {/* <Header /> */}
         <Hero />
         <Screens />

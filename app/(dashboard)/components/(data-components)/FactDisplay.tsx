@@ -4,6 +4,8 @@ import supabase from "@/packages/lib/supabase/client";
 import { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
+// Cool Fact Display component. This component is not used. 
+
 const FactDisplay = () => {
   const [fact, setFact] = useState<
     { id: string; fact_content: string }[] | null

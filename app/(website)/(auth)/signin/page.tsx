@@ -1,4 +1,4 @@
-import AuthForm from "@/components/clinq-components/(action-component)/AuthForm";
+import AuthForm from "@/components/pricing-components/(action-component)/AuthForm";
 import {
   ClerkProvider,
   SignInButton,
