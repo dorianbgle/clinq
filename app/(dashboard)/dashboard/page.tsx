@@ -19,11 +19,11 @@ export default function DashBoard() {
       
       <article className="w-full px-7 p-5 bg-gradient-to-r large-dotted-bg md:h-72 h-96 flex flex-col justify-end overflow-clip relative border">
         <h3 className="text-black/30 md:text-[25rem] text-[16rem] font-bold text-end -right-52 md:-right-8 absolute md:-top-32 -z-10">ClinQ</h3>
-        <h1 className="text-2xl md:text-3xl py-2 font-thin flex justify-center flex-col"><strong className="text-5xl bg-gradient-to-r from-zinc-400 to-white text-transparent bg-clip-text">ClinQ</strong> Medical Education Suite</h1>
+        <h1 className="text-2xl md:text-3xl py-2 font-thin flex justify-center flex-col"><strong className="text-5xl ">ClinQ</strong> <span className="text-4xl text-zinc-500">Medical Education Suite </span></h1>
         <p>
-          <Suspense fallback={<div>Loading UserData...</div>}>
+          {/* <Suspense fallback={<div>Loading UserData...</div>}>
             <UserData />
-          </Suspense>
+          </Suspense> */}
         </p>
         {/* <div className="">
           <blockquote className="italic">

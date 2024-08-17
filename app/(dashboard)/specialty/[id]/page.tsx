@@ -75,13 +75,13 @@ export default async function Case({
       <aside className="w-full gap-2 overflow-hidden overflow-y-auto border m-2 select-none">
         <h1 className="p-8 text-3xl flex gap-3 items-center dotted-bg">
           <Link href={"/specialty"} className="h-5 w-5 active:scale-90">
-            <MdArrowBackIos className="hover:text-zinc-500 text-xl" />
+            <MdArrowBackIos className="hover:text-zinc-500 sm:text-xl text-lg" />
           </Link>{" "}
           <header className="flex flex-col">
             {specialtyName && specialtyName[0] === "General Practice"
               ? `${specialtyName} Clinic`
               : `${specialtyName} Ward List`}
-            <p className="text-sm text-zinc-500">
+            <p className="text-xs sm:text-sm text-zinc-500">
               Patients on our ward change often. Keep up to date with our
               patients&apos; journies. See the {casesLength} patients on this
               ward.
@@ -93,10 +93,10 @@ export default async function Case({
 
         <div className="">
         <div className="p-3 grid grid-cols-10 gap-4 items-center uppercase text-sm font-semibold text-zinc-500 border-b border-zinc-800">
-        <div className="col-span-1">Bed</div>
-        <div className="col-span-2">Patient Name</div>
-        <div className="col-span-2">Age</div>
-        <div className="col-span-2">Presenting Complaint</div>
+        <div className="col-span-2 sm:col-span-1">Bed</div>
+        <div className="col-span-3 sm:col-span-2">Patient Name</div>
+        <div className="col-span-2 hidden sm:flex">Age</div>
+        <div className="col-span-2 hidden sm:flex">Presenting Complaint</div>
         <div className="col-span-3">Diagnosis</div>
       </div>
       {sortedCases && sortedCases.map((c, index) => (
@@ -106,17 +106,17 @@ export default async function Case({
           href={`/specialty/preview/${c.id}`}
         >
           <div className="p-3 grid grid-cols-10 gap-4 items-center">
-            <div className="flex items-center col-span-1">
+            <div className="flex items-center col-span-2 sm:col-span-1">
           <IoIosReturnRight className="h-3 w-3 mr-2" />
               <IoDocumentTextSharp className="h-4 w-4 text-zinc-500 mr-2" />
             {index + 1}
             </div>
-            <div className=" col-span-2 flex">
+            <div className="col-span-3 flex sm:col-span-2">
               {c.case_name}
               </div>
-            <div className="col-span-2">{c.casejson?.age}</div>
-            <div className="col-span-2">{c.casejson?.presenting_symptom || ""}</div>
-            <div className="col-span-3">{c.casejson?.diagnosis || ""}</div>
+            <div className="col-span-2 hidden sm:flex">{c.casejson?.age}</div>
+            <div className="col-span-2 hidden sm:flex">{c.casejson?.presenting_symptom || ""}</div>
+            <div className="col-span-2">{c.casejson?.diagnosis || ""}</div>
           </div>
         </Link>
       ))}
