@@ -17,11 +17,11 @@ export function Footer() {
     <footer className="border-t-[1px] border-border px-4 md:px-6 pt-10 md:pt-16 bg-[#0C0C0C] overflow-hidden md:max-h-[820px]">
       <div className="container">
         <div className="flex justify-between items-center border-border border-b-[1px] pb-10 md:pb-16 mb-12">
-          <Link href="/" className="scale-50 -ml-[52px] md:ml-0 md:scale-100 font-bold text-lg">
+          <Link href="/" className="font-semibold text-5xl">
             ClinQ
           </Link>
 
-          <span className="font-normal md:text-2xl text-right">
+          <span className="md:text-2xl text-right">
             Study medicine smarter
           </span>
         </div>

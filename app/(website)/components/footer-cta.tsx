@@ -25,7 +25,7 @@ export function FooterCTA() {
 
       <div className="mt-10 md:mb-8">
         <div className="flex items-center space-x-4">
-          <Link href="/talk-to-us">
+          <Link href="/dashboard">
             <Button
               variant="outline"
               className="border border-primary h-12 px-6 border-white text-white hidden md:block"
@@ -34,11 +34,11 @@ export function FooterCTA() {
             </Button>
           </Link>
 
-          <a href="https://app.midday.ai">
+          <Link href="/dashboard">
             <Button className="h-12 px-5 bg-white text-black hover:bg-white/80">
               Get Started
             </Button>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

@@ -7,9 +7,10 @@ import { usePathname } from "next/navigation";
 import menuAssistant from "@/public/menu-assistant.jpg";
 import menuEngine from "@/public/menu-engine.png";
 import { useState } from "react";
-import { FaDiscord, FaGithub } from "react-icons/fa";
+import { FaBookOpen, FaDiscord, FaGithub } from "react-icons/fa";
 import {
   MdChangeCircle,
+  MdOutlineChecklist,
   MdOutlineDescription,
   MdOutlineIntegrationInstructions,
   MdOutlineMemory,
@@ -27,8 +28,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { BarChart, File, Files, Inbox, Palette } from "lucide-react";
-import { BsQuestion, BsStopwatch } from "react-icons/bs";
+import { BarChart, Palette } from "lucide-react";
+import { BsQuestion, } from "react-icons/bs";
+import { FaUserDoctor } from "react-icons/fa6";
+import { GoBriefcase } from "react-icons/go";
 
 const listVariant = {
   show: {
@@ -88,32 +91,28 @@ export function Header() {
         {
           path: "/approachguide",
           title: "Approaches",
-          icon: <Inbox size={20} />,
+          icon: <FaBookOpen size={20} />,
         },
         {
           path: "/checklistguide",
           title: "Checklists",
-          icon: <Files size={20} />,
+          icon: <MdOutlineChecklist size={20} />,
         },
         {
           path: "/caseguide",
           title: "Cases",
-          icon: <BsStopwatch size={20} />,
+          icon: <FaUserDoctor size={20} />,
         },
         {
           path: "/simulationguide",
           title: "Hospital Simulation",
-          icon: <File size={20} />,
+          icon: <GoBriefcase size={20} />,
         },
       ],
     },
     {
       title: "Pricing",
       path: "/pricing",
-    },
-    {
-      title: "Updates",
-      path: "/updates",
     },
     {
       title: "Story",
