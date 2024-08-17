@@ -3,13 +3,13 @@ import computer from "../../../../public/computer.png";
 
 export function SectionTwo() {
   return (
-    <section className="border border-border container bg-[#121212] md:pb-0 overflow-hidden mb-12">
+    <section className="border border-border container bg-zinc-950 md:pb-0 overflow-hidden mb-12">
       <div className="flex flex-col md:space-x-12 md:flex-row">
         <Image
           src={computer}
           height={446}
           width={836}
-          className="-mb-[1px] object-contain"
+          className="-mb-[1px] object-contain "
           alt="Overview"
           quality={100}
         />

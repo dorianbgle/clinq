@@ -168,13 +168,13 @@ export function Header() {
           "transition duration-1s ease-in-out animate-header-slide-down-fade"
       )}
     >
-      <nav className="border border-border px-4 flex items-center backdrop-filter backdrop-blur-xl bg-[#121212] bg-opacity-70 h-[50px] z-20">
+      <nav className="border border-border px-4 flex items-center backdrop-filter backdrop-blur-xl bg-zinc-950 bg-opacity-70 h-[50px] z-20">
         <ContextMenu>
           <ContextMenuTrigger>
             <Link href="/">
               <span className="sr-only">Midday Logo</span>
               <Link
-                className="text-4xl p-3 bg-gradient-to-r from-cyan-400 via-purple-300 to-cyan-300 inline-block text-transparent bg-clip-text font-medium"
+                className="text-4xl p-3 bg-gradient-to-r from-cyan-200 via-cyan-400 to-cyan-200 inline-block text-transparent bg-clip-text font-medium"
                 href={"/"}
               >
                 ClinQ

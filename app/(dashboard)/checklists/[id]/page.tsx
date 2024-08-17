@@ -27,7 +27,7 @@ export default async function Checklists({
           {symptoms &&
             symptoms?.map(({ checklist_name, checklistjson }) => (
               <>
-                <h1 className="pt-10 text-3xl w-full flex gap-3 items-center dotted-bg">
+                <h1 className="pt-10 w-full flex gap-3 items-center dotted-bg p-4 text-3xl lg:text-4xl xl:text-5xl">
                   <Link href={"/checklists"} className="w-8 h-8 flex items-center">
                     <FaArrowLeftLong className="hover:text-zinc-800 h-5 w-5" />
                   </Link>

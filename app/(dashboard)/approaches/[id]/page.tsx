@@ -36,30 +36,30 @@ export default async function Case({
                 {/* Consider ways to reduce the repetition of the current code */}
                 <span className="flex gap-7 items-center py-3 pb-6 justify-between">
                   <div className="justify-items-start flex items-center gap-5">
-                  <Link
-                    href={"/approaches"}
-                    className="w-8 h-8 active:scale-90"
-                  >
-                    <HiChevronLeft className="w-8 h-8 rounded-full hover:bg-zinc-800 border text-zinc-300 hover:border-zinc-500" />
-                  </Link>
-                  <h1 className="text-3xl">Approach to {i.title && i.title}</h1>
+                    <Link
+                      href={"/approaches"}
+                      className="w-8 h-8 active:scale-90"
+                    >
+                      <HiChevronLeft className="w-8 h-8 rounded-full hover:bg-zinc-800 border text-zinc-300 hover:border-zinc-500" />
+                    </Link>
+                    <h1 className="text-xl sm:text-3xl">
+                      Approach to {i.title && i.title}
+                    </h1>
                   </div>
                   {i?.symptomjson?.isHighYield && (
                     <p className=" bg-red-800/20 text-xs border px-3 py-1 rounded-full border-red-600/80 text-red-600/80 flex items-end justify-end">
                       High Yield
                     </p>
-                  ) }
+                  )}
                 </span>
 
-                
                 <Accordion type="single" collapsible defaultValue="item-1">
                   <AccordionItem value="item-1">
                     <AccordionTrigger>Overall Approach</AccordionTrigger>
                     <AccordionContent>
-           
                       <p className="text-md leading-6 text-justify">
                         <Markdown>{i?.symptomjson?.overallapproach}</Markdown>
-                      </p> 
+                      </p>
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
@@ -73,27 +73,33 @@ export default async function Case({
                           <>
                             <div className="">
                               <div className="grid grid-col-3">
-                                {d?.heading && (
+                                {d?.heading ? (
                                   <div className="border p-8 text-lg dotted-bg col-span-3 uppercase font-semibold">
                                     {d?.heading}
                                   </div>
+                                ) : (
+                                  ""
                                 )}
-                                </div>
+                              </div>
 
-                                {index === 0 && (
-                                  <div className="grid grid-cols-3 invisible md:visible">
-                                    <div className="col-start-2 pt-7 uppercase font-semibold p-2">
-                                      Characteristics
-                                    </div>
-                                    <div className="pt-7 uppercase font-semibold p-2">
-                                      Associated Features
-                                    </div>
+                              {index === 0 && (
+                                <div className="grid grid-cols-3 invisible md:visible">
+                                  <div className="col-start-2 pt-7 uppercase font-semibold p-2">
+                                    Characteristics
                                   </div>
-                                )}
-                              
-                              {d?.subheading && <div className="p-3 uppercase font-semibold text-sm border">
-                                 {d?.subheading}
-                              </div>}
+                                  <div className="pt-7 uppercase font-semibold p-2">
+                                    Associated Features
+                                  </div>
+                                </div>
+                              )}
+
+                              {d?.subheading ? (
+                                <div className="p-3 uppercase font-semibold text-sm border">
+                                  {d?.subheading}
+                                </div>
+                              ) : (
+                                ""
+                              )}
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-3 border">
                               <div className="px-6 py-4 flex gap-2 items-center border">
@@ -119,13 +125,17 @@ export default async function Case({
                                 })()}
                                 {d?.condition && d?.condition}
                               </div>
-                              <div className="border p-3">
-                                {d?.characteristics && d?.characteristics}
-                              </div>
-                              <div className="border p-3">
-                                {d.associated_features &&
-                                  d?.associated_features}
-                              </div>
+                              {d?.characteristics ? (
+                                <div className="border p-3">
+                                  {d?.characteristics}
+                                </div>
+                              ) : (
+                                ""
+                              )}
+                              {d.associated_features ? <div className="border p-3">
+                                
+                                  {d?.associated_features}
+                              </div>: ""}
                             </div>
                           </>
                         ))}
@@ -139,19 +149,20 @@ export default async function Case({
                   </AccordionItem>
                 </Accordion>
 
-                {i?.symptomjson?.urgent_considerations && 
-                <Accordion type="single" collapsible>
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>Urgent Considerations</AccordionTrigger>
-                    <AccordionContent>
-                      <>
-                        <section className="w-full p-5 bg-red-800/20 rounded-xl border border-red-700 text-red-600">
-                          {i?.symptomjson?.urgent_considerations}
-                        </section>
-                      </>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>}
+                {i?.symptomjson?.urgent_considerations && (
+                  <Accordion type="single" collapsible>
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>Urgent Considerations</AccordionTrigger>
+                      <AccordionContent>
+                        <>
+                          <section className="w-full p-5 bg-red-800/20 rounded-xl border border-red-700 text-red-600">
+                            {i?.symptomjson?.urgent_considerations}
+                          </section>
+                        </>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                )}
 
                 <Accordion type="single" collapsible>
                   <AccordionItem value="item-1">
@@ -244,16 +255,20 @@ export default async function Case({
                             General Investigations
                           </h1>
                           <div className="grid grid-cols-3 ">
-                            {i?.investigationjson ? i?.investigationjson?.map((d: any) => (
-                              <>
-                                <div className="col-span-1 border p-3 uppercase font-semibold">
-                                  {d?.investigation}
-                                </div>{" "}
-                                <div className="col-span-2 border p-3 text-justify">
-                                  {d?.description}
-                                </div>
-                              </>
-                            )): <p className="text-zinc-500">Check back soon</p>}{" "}
+                            {i?.investigationjson ? (
+                              i?.investigationjson?.map((d: any) => (
+                                <>
+                                  <div className="col-span-1 border p-3 uppercase font-semibold">
+                                    {d?.investigation}
+                                  </div>{" "}
+                                  <div className="col-span-2 border p-3 text-justify">
+                                    {d?.description}
+                                  </div>
+                                </>
+                              ))
+                            ) : (
+                              <p className="text-zinc-500">Check back soon</p>
+                            )}{" "}
                           </div>
                         </section>
                         <section className="col-span-1">
@@ -261,16 +276,20 @@ export default async function Case({
                             Specific Investigations
                           </h1>
                           <div className="grid grid-cols-3">
-                            {i?.specificinvestigationjson ? i?.specificinvestigationjson?.map((d: any) => (
-                              <>
-                                <div className="col-span-1 border p-3 uppercase font-semibold">
-                                  {d?.investigation}
-                                </div>{" "}
-                                <div className="col-span-2 border p-3 text-justify">
-                                  {d?.description}
-                                </div>
-                              </>
-                            )): <p className="text-zinc-500">Check back soon</p>}
+                            {i?.specificinvestigationjson ? (
+                              i?.specificinvestigationjson?.map((d: any) => (
+                                <>
+                                  <div className="col-span-1 border p-3 uppercase font-semibold">
+                                    {d?.investigation}
+                                  </div>{" "}
+                                  <div className="col-span-2 border p-3 text-justify">
+                                    {d?.description}
+                                  </div>
+                                </>
+                              ))
+                            ) : (
+                              <p className="text-zinc-500">Check back soon</p>
+                            )}
                           </div>
                         </section>
                       </div>
@@ -284,7 +303,11 @@ export default async function Case({
                     <AccordionContent>
                       <>
                         <div className="border p-5 rounded-xl dotted-bg">
-                          <Markdown>{i?.symptomjson?.references ? i.symptomjson?.references : "Check back soon"}</Markdown>
+                          <Markdown>
+                            {i?.symptomjson?.references
+                              ? i.symptomjson?.references
+                              : "Check back soon"}
+                          </Markdown>
                         </div>
                         <p className="text-zinc-500 w-full justify-center flex p-3">
                           This is referenced using the APA referencing style
