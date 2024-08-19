@@ -16,7 +16,7 @@ export default function DashBoard() {
       </div> */}
 
       <article className="w-full px-7 p-5 bg-gradient-to-r large-dotted-bg md:h-96 h-96 flex flex-col justify-center md:justify-end overflow-clip relative border items-center md:items-start">
-        <h3 className="text-black/30 md:text-[25rem] sm:-right-12 text-[14rem] font-bold text-end -right-20 md:-right-8 absolute md:-top-32 -z-10">
+        <h3 className="text-black/30 md:text-[25rem] sm:-right-12 text-[14rem] font-bold text-end -right-20 md:-right-8 absolute md:-top-16 -z-10">
           ClinQ
         </h3>
         <h1 className="text-2xl md:text-3xl py-2 font-thin flex justify-center flex-col">
