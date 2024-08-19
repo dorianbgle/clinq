@@ -34,16 +34,16 @@ export function Footer() {
                   <Link href="/overview">Overview</Link>
                 </li>
                 <li className="transition-colors text-[#878787]">
-                  <Link href="/inbox">Symptom Guide</Link>
+                  <Link href="/approachguide">Symptom Guide</Link>
                 </li>
                 <li className="transition-colors text-[#878787]">
-                  <Link href="/vault">Checklists</Link>
+                  <Link href="/checklistguide">Checklists</Link>
                 </li>
                 <li className="transition-colors text-[#878787]">
-                  <Link href="/tracker">Case Files</Link>
+                  <Link href="/caseguide">Case Files</Link>
                 </li>
                 <li className="transition-colors text-[#878787]">
-                  <Link href="/invoice">Long Stay Cases</Link>
+                  <Link href="/longcaseguide">Long Stay Cases</Link>
                 </li>
                 <li className="transition-colors text-[#878787]">
                   <Link href="/pricing">Pricing</Link>
