@@ -53,7 +53,7 @@ export default async function Case({
                   )}
                 </span>
 
-                <Accordion type="single" collapsible defaultValue="item-1">
+                <Accordion type="single" collapsible defaultValue="item-1">x
                   <AccordionItem value="item-1">
                     <AccordionTrigger>Overall Approach</AccordionTrigger>
                     <AccordionContent>
@@ -72,7 +72,7 @@ export default async function Case({
                         {i.differentialtable?.map((d: any, index: number) => (
                           <>
                             <div className="">
-                              <div className="grid grid-col-3 invisible md:visible">
+                              <div className="grid grid-col-3 ">
                                 {d?.heading ? (
                                   <div className="border p-8 text-lg dotted-bg col-span-3 uppercase font-semibold">
                                     {d?.heading}
@@ -81,10 +81,10 @@ export default async function Case({
                                   ""
                                 )}
                               </div>
-
                               {index === 0 && (
-                                <div className="grid grid-cols-3 invisible md:visible">
-                                  <div className="col-start-2 pt-7 uppercase font-semibold p-2">
+                                <div className="grid-cols-3 hidden md:grid">
+                    
+                                  <div className=" col-start-2 pt-7 uppercase font-semibold p-2">
                                     Characteristics
                                   </div>
                                   <div className="pt-7 uppercase font-semibold p-2">
