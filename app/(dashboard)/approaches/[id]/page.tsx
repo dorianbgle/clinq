@@ -72,7 +72,7 @@ export default async function Case({
                         {i.differentialtable?.map((d: any, index: number) => (
                           <>
                             <div className="">
-                              <div className="grid grid-col-3">
+                              <div className="grid grid-col-3 invisible md:visible">
                                 {d?.heading ? (
                                   <div className="border p-8 text-lg dotted-bg col-span-3 uppercase font-semibold">
                                     {d?.heading}
