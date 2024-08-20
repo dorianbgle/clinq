@@ -53,7 +53,7 @@ export default async function Case({
                   )}
                 </span>
 
-                <Accordion type="single" collapsible defaultValue="item-1">x
+                <Accordion type="single" collapsible defaultValue="item-1">
                   <AccordionItem value="item-1">
                     <AccordionTrigger>Overall Approach</AccordionTrigger>
                     <AccordionContent>
