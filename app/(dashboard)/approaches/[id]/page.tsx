@@ -69,18 +69,11 @@ export default async function Case({
                     <AccordionTrigger>Differentials</AccordionTrigger>
                     <AccordionContent>
                       <div className="w-full text-sm text-left rtl:text-right bg-transparent border">
+
+
+                        {/* Issue here with the first index */}
                         {i.differentialtable?.map((d: any, index: number) => (
                           <>
-                            <div className="">
-                              <div className="grid grid-col-3 ">
-                                {d?.heading ? (
-                                  <div className="border p-8 text-lg dotted-bg col-span-3 uppercase font-semibold">
-                                    {d?.heading}
-                                  </div>
-                                ) : (
-                                  ""
-                                )}
-                              </div>
                               {index === 0 && (
                                 <div className="grid-cols-3 hidden md:grid">
                     
@@ -92,6 +85,16 @@ export default async function Case({
                                   </div>
                                 </div>
                               )}
+                            <div className="">
+                              <div className="grid grid-col-3 ">
+                                {d?.heading ? (
+                                  <div className="border p-8 text-lg dotted-bg col-span-3 uppercase font-semibold">
+                                    {d?.heading}
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
+                              </div>
 
                               {d?.subheading ? (
                                 <div className="p-3 uppercase font-semibold text-sm border">
