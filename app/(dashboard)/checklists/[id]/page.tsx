@@ -54,7 +54,7 @@ export default async function Checklists({
                             </td>
                             <td className="border">
                               {i.content.map((c: any, idx: number) => (
-                                <p className={`p-2 ${idx % 2 === 0 ? "bg-zinc-950 border" : ""}`} key={idx}>
+                                <p className={`p-3 ${idx % 2 === 0 ? "bg-zinc-950 border" : ""}`} key={idx}>
                                   {c || "This will be filled in soon"}
                                 </p>
                               ))}
