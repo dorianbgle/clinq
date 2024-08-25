@@ -27,7 +27,7 @@ export default async function Checklists({
           {symptoms &&
             symptoms?.map(({ checklist_name, checklistjson }) => (
               <>
-                <h1 className="pt-10 w-full flex gap-3 items-center dotted-bg p-4 text-3xl lg:text-4xl xl:text-5xl">
+                <h1 className="pt-10 pb-3 before:w-full flex gap-3 items-center dotted-bg p-4 text-3xl lg:text-4xl xl:text-5xl">
                   <Link
                     href={"/checklists"}
                     className="w-8 h-8 flex items-center"
@@ -36,11 +36,15 @@ export default async function Checklists({
                   </Link>
                   {checklist_name} Checklist
                 </h1>
-                <p className="text-justify p-5 dotted-bg">
-                  {checklistjson?.map((i: any) => {
-                    return i.overview;
-                  })}
-                </p>
+                {checklistjson ? (
+                  <p className="text-justify p-5 dotted-bg">
+                    {checklistjson?.map((i: any) => {
+                      return i.overview;
+                    })}
+                  </p>
+                ) : (
+                  ""
+                )}
 
                 <table className="overflow-x-auto w-full">
                   <tbody className="border">

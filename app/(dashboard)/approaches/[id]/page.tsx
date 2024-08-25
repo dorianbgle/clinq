@@ -69,22 +69,19 @@ export default async function Case({
                     <AccordionTrigger>Differentials</AccordionTrigger>
                     <AccordionContent>
                       <div className="w-full text-sm text-left rtl:text-right bg-transparent border">
-
-
                         {/* Issue here with the first index */}
                         {i.differentialtable?.map((d: any, index: number) => (
                           <>
-                              {index === 0 && (
-                                <div className="grid-cols-3 hidden md:grid">
-                    
-                                  <div className=" col-start-2 pt-7 uppercase font-semibold p-2">
-                                    Characteristics
-                                  </div>
-                                  <div className="pt-7 uppercase font-semibold p-2">
-                                    Associated Features
-                                  </div>
+                            {index === 0 && (
+                              <div className="grid-cols-3 hidden md:grid">
+                                <div className=" col-start-2 pt-7 uppercase font-semibold p-2">
+                                  Characteristics
                                 </div>
-                              )}
+                                <div className="pt-7 uppercase font-semibold p-2">
+                                  Associated Features
+                                </div>
+                              </div>
+                            )}
                             <div className="">
                               <div className="grid grid-col-3 ">
                                 {d?.heading ? (
@@ -135,10 +132,13 @@ export default async function Case({
                               ) : (
                                 ""
                               )}
-                              {d.associated_features ? <div className="border p-3 hidden sm:flex">
-                                
+                              {d.associated_features ? (
+                                <div className="border p-3 hidden sm:flex">
                                   {d?.associated_features}
-                              </div>: ""}
+                                </div>
+                              ) : (
+                                ""
+                              )}
                             </div>
                           </>
                         ))}
@@ -146,6 +146,8 @@ export default async function Case({
                         <p className="text-zinc-500 text-xs p-5 text-center">
                           Colours represent how commonly each condition arises.
                           Red represents rare, orange uncommon and green common.
+                          In the mobile view, characteristics and mobile view
+                          are not visible.
                         </p>
                       </div>
                     </AccordionContent>

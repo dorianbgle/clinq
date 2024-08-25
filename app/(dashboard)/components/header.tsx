@@ -14,11 +14,13 @@ import { RxAvatar } from "react-icons/rx";
 export const revalidate = 60
 
 export async function Header() {
+  // Consider improving the appearance of announcement objects.
   const { data: announcements } = await supabase.from("announcements").select();
 
   return (
     <header className="-ml-4 -mr-4 md:m-0 z-10 px-4 md:pr-0 md:border-b-[1px] flex justify-between pt-4 pb-2 md:pb-4 items-center todesktop:sticky todesktop:top-0  todesktop:border-none sticky md:static top-0 backdrop-filter backdrop-blur-xl md:backdrop-filter md:backdrop-blur-none   ">
       <MobileMenu />
+      <section className="flex mr-auto justify-center items-center text-zinc-500 text-sm">Press Command + K to use our AI Assistant</section>
       <section className="flex space-x-2 no-drag ml-auto gap-2 justify-center items-center">
         <Sheet>
           <SheetTrigger>
