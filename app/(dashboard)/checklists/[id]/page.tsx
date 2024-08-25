@@ -22,6 +22,7 @@ export default async function Checklists({
 
   return (
     <>
+      {/* Consider checkboxes to mark. To complete, don't use a single string for the content object. Spread it. This is the next task. This will make the styling of objects simpler.*/}
       <aside className="w-full justify-center items-center flex-col flex gap-2 overflow-hidden overflow-y-auto">
         <h3 className="flex gap-2 flex-col lg:w-2/3 items-center justify-center">
           {symptoms &&
@@ -46,19 +47,21 @@ export default async function Checklists({
                       {" "}
                       {checklistjson?.map((i: any) => (
                         <>
-                          {i?.content ? (
-                            <tr className="p-5">
-                              <>
-                                <td className="p-5 border align-top uppercase text-sm text-zinc-500 font-semibold">
-                                  {i?.subheading}
+                         {Array.isArray(i?.content) ? (
+                          <tr className="p-5">
+                            <td className="p-5 border align-top uppercase text-sm font-semibold">
+                              {i?.subheading}
+                            </td>
+                            <td className="border">
+                              {i.content.map((c: any, idx: number) => (
+                                <p className={`p-2 ${idx % 2 === 0 ? "bg-zinc-950 border" : ""}`} key={idx}>
+                                  {c || "This will be filled in soon"}
+                                </p>
+                              ))}
                                 </td>
-                                <td className="p-5 border">
-                                  <Markdown className={style.reactMarkDown}>
-                                    {i?.content}
-                                  </Markdown>
-                                </td>{" "}
-                              </>
                             </tr>
+                        
+                         
                           ) : (
                             <>
                               <tr className="p-5 items-center flex w-full">

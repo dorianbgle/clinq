@@ -1,4 +1,4 @@
-import { Header } from "./components/header";
+import Header from "./components/header";
 import { Metadata } from "next/types";
 import Sidebar from "./components/sidebar";
 import { ThemeProvider } from "@/app/(dashboard)/components/theme-provider"
