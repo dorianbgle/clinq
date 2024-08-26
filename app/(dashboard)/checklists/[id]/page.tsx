@@ -24,7 +24,7 @@ export default async function Checklists({
     <>
       {/* Consider checkboxes to mark. To complete, don't use a single string for the content object. Spread it. This is the next task. This will make the styling of objects simpler.*/}
       <aside className="w-full justify-center items-center flex-col flex gap-2 overflow-hidden overflow-y-auto">
-        <h3 className="flex gap-2 flex-col lg:w-2/3 items-center justify-center">
+        <h3 className="flex gap-2 flex-col items-center justify-center">
           {symptoms &&
             symptoms?.map(({ checklist_name, checklistjson }) => (
               <>
