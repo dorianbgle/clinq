@@ -66,6 +66,11 @@
   text-decoration: underline;
 }
 
+.loading .hidden {
+  display: inline-block !important;
+}
+
+
 .updates blockquote p {
   margin: 7px 2px;
   padding-left: 14px;
@@ -73,6 +78,12 @@
   border-left: 3px solid;
   color: hsl(var(--foreground));
 }
+
+a.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 
 .updates b,
 .updates strong {
