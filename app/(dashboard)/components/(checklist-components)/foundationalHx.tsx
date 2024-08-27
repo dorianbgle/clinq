@@ -14,6 +14,7 @@ const FoundationalHx = async () => {
 
   return (
     <>
+    {/* Change srtructure, make mobile responsive */}
       {checklists &&
         checklists.map((i) => {
           return (

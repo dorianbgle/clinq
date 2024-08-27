@@ -8,7 +8,16 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const SymptomDisplay = () => {
   const [specialties, setSpecialties] = useState<
-    { id: string; title: string }[] | null
+    | {
+        id: string;
+        title: string;
+        symptomjson: {
+          isHighYield: boolean;
+          difficulty: string;
+          specialty: string;
+        };
+      }[]
+    | null
   >(null);
   const [loading, setLoading] = useState(false);
   const [fetchingItemId, setFetchingItemId] = useState<string | null>(null); // Track the ID being fetched
@@ -24,7 +33,7 @@ const SymptomDisplay = () => {
   const getSpecialties = async () => {
     const { data } = await supabase
       .from("symptoms")
-      .select("id, title")
+      .select("id, title, symptomjson")
       .order("title", { ascending: true });
     setSpecialties(data);
     setLoading(false);
@@ -101,7 +110,7 @@ const SymptomDisplay = () => {
             <Link
               href={`/approaches/${s.id}`}
               key={s.id}
-              className={`hover:bg-zinc-800/20 py-3 border-b items-center hover:border-zinc-500 hover:text-zinc-300 w-full flex justify-center rounded-lg border-zinc-800 hover:border text-zinc-500 active:ml-5 ${
+              className={`hover:bg-zinc-800/20 py-3 border-b items-center hover:border-zinc-500 hover:text-zinc-300 w-full justify-between flex rounded-lg border-zinc-800 hover:border text-zinc-500 active:ml-5 ${
                 index % 2 === 1 ? "bg-zinc-950" : ""
               } ${isFetching ? "pointer-events-none opacity-50" : ""}`} // Disable and style other links when fetching
               onClick={() => {
@@ -109,7 +118,7 @@ const SymptomDisplay = () => {
                 setIsFetching(true); // Set isFetching to true
               }}
             >
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-3 px-5">
                 <p>{s.title}</p>{" "}
                 {fetchingItemId === s.id && ( // Show loader only for the fetching item
                   <svg
@@ -130,6 +139,62 @@ const SymptomDisplay = () => {
                   </svg>
                 )}
               </div>
+              <div className="px-5 flex space-x-2">
+              {/* Consider placing other details such as difficulty and specialty in here. Check this if there is any errors, consdiser tossign the admin stuyff out if there is any isseu*/}
+
+              {/* Place switch statement here */}
+              {s.symptomjson?.difficulty ? (
+                <>
+                  {" "}
+                  {(() => {
+                    switch (s.symptomjson.difficulty) {
+                      case "easy":
+                        return (
+                          <p className="bg-green-950/80 rounded-xl border border-green-600 text-green-600 text-xs px-1">
+                            Basic
+                          </p>
+                        );
+                      case "intermediate":
+                        return (
+                          <p className="bg-yellow-950/80 rounded-xl border border-yellow-600 text-yellow-600 text-xs px-1">
+                            Intermediate
+                          </p>
+                        );
+                      case "advanced":
+                        return (
+                          <p className="bg-red-950/80 rounded-xl border border-red-600 text-red-600 text-xs px-1">
+                            Advanced
+                          </p>
+                        );
+                      default:
+                        return null;
+                      }
+                    })()}
+                </>
+              ) : (
+                ""
+              )}
+              {s.symptomjson?.isHighYield ? (
+                <p className="bg-red-950/80 rounded-xl border border-red-700 text-red-700 text-xs px-1">
+                  High Yield
+                </p>
+              ) : (
+                ""
+              )}
+
+              {s.symptomjson?.specialty ? (
+                <>
+           
+                          <p className=" rounded-xl border border-blue-500 text-blue-500 bg-blue-950/50 text-xs px-1">
+                            {s.symptomjson.specialty}</p>
+                      
+                </>
+              ) : (
+                ""
+              )}
+              
+              </div>
+
             </Link>
           ))}
         {displayedResults?.length === 0 ? (

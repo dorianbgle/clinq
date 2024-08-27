@@ -28,7 +28,7 @@ export default async function Checklists({
           {symptoms &&
             symptoms?.map(({ checklist_name, checklistjson }) => (
               <>
-                <h1 className="pt-10  pb-8 w-full flex gap-3 items-center dotted-bg p-6 text-3xl lg:text-4xl xl:text-5xl">
+                <h1 className="pt-10 pb-8 w-full flex gap-3 items-center dotted-bg p-6 text-3xl lg:text-4xl xl:text-5xl">
                   <Link
                     href={"/checklists"}
                     className="w-8 h-8 flex items-center"
@@ -47,21 +47,24 @@ export default async function Checklists({
                       {" "}
                       {checklistjson?.map((i: any) => (
                         <>
-                         {Array.isArray(i?.content) ? (
-                          <tr className="p-5">
-                            <td className="p-5 border align-top uppercase text-sm font-semibold">
-                              {i?.subheading}
-                            </td>
-                            <td className="border">
-                              {i.content.map((c: any, idx: number) => (
-                                <p className={`p-3 ${idx % 2 === 0 ? "bg-zinc-950 border" : ""}`} key={idx}>
-                                  {c || "This will be filled in soon"}
-                                </p>
-                              ))}
-                                </td>
+                          {Array.isArray(i?.content) ? (
+                            <tr className="p-5">
+                              <td className="p-5 border align-top uppercase text-sm font-semibold">
+                                {i?.subheading}
+                              </td>
+                              <td className="border">
+                                {i.content.map((c: any, idx: number) => (
+                                  <p
+                                    className={`p-3 ${
+                                      idx % 2 === 0 ? "bg-zinc-950 border" : ""
+                                    }`}
+                                    key={idx}
+                                  >
+                                    {c || "This will be filled in soon"}
+                                  </p>
+                                ))}
+                              </td>
                             </tr>
-                        
-                         
                           ) : (
                             <>
                               <tr className="p-5 items-center flex w-full">
