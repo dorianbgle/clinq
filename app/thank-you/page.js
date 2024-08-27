@@ -1,3 +1,5 @@
+"use client"
+
 // pages/thank-you.js
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
