@@ -3,7 +3,7 @@
 // pages/thank-you.js
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { supabase } from '../lib/supabaseClient';
+import { supabase } from '../../packages/lib/supabase/client';
 
 const ThankYou = () => {
   const router = useRouter();
