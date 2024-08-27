@@ -2,7 +2,7 @@
 // pages/login.js
 import { useState } from 'react';
 import supabase from '../../packages/lib/supabase/client';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
   const [email, setEmail] = useState('');
