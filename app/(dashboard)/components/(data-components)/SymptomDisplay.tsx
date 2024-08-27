@@ -5,6 +5,9 @@ import supabase from "@/packages/lib/supabase/client";
 import { useEffect, useState } from "react";
 import { FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Switch } from "@/components/ui/switch"; // Ensure this import is correct
+
+export const revalidate = 60;
 
 const SymptomDisplay = () => {
   const [specialties, setSpecialties] = useState<
@@ -24,6 +27,9 @@ const SymptomDisplay = () => {
   const [isFetching, setIsFetching] = useState(false); // Track if any item is being fetched
   const [page, setPage] = useState(0);
   const [query, setQuery] = useState("");
+  const [showHighYield, setShowHighYield] = useState(false);
+  const [showSpecialty, setShowSpecialty] = useState(false);
+  const [showDifficulty, setShowDifficulty] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -56,12 +62,6 @@ const SymptomDisplay = () => {
 
   let maxPages = Math.ceil((filteredItems?.length ?? 0) / 10);
 
-  let rightDisabled;
-
-  if (page === maxPages - 1) {
-    rightDisabled = true;
-  }
-
   const clearSearch = () => {
     if (query.length > 0) {
       setQuery("");
@@ -71,17 +71,41 @@ const SymptomDisplay = () => {
 
   return (
     <>
+      {/* Switches to toggle visibility */}
       <span className="py-5 gap-2 flex flex-col md:w-2/3 select-none">
         <h1 className="text-2xl">Approaches</h1>
         <h3 className="text-zinc-500">
-          Study our approaches section to formulate your own approach to each
-          symptom
+          Study our approaches section to formulate your own approach to each symptom
         </h3>
+         {/* Visibility control switches */}
+         <section className="flex gap-4 text-sm justify-end text-zinc-500 items-center py-2">
+          <div className="flex items-center gap-2">
+            <Switch
+              checked={showHighYield}
+              onCheckedChange={() => setShowHighYield(!showHighYield)} // Corrected prop name
+            />
+            <label>High Yield Topics</label>
+          </div>
+          <div className="flex items-center gap-2">
+            <Switch
+              checked={showSpecialty}
+              onCheckedChange={() => setShowSpecialty(!showSpecialty)} // Corrected prop name
+            />
+            <label>Specialty</label>
+          </div>
+          <div className="flex items-center gap-2">
+            <Switch
+              checked={showDifficulty}
+              onCheckedChange={() => setShowDifficulty(!showDifficulty)} // Corrected prop name
+            />
+            <label>Difficulty</label>
+          </div>
+        </section>
         <section className="flex gap-2 items-center">
           <input
             type="text"
             value={query}
-            className=" flex p-2 bg-transparent border w-full  rounded-full text-sm focus:border-zinc-500 focus:outline-none px-4"
+            className="flex p-2 bg-transparent border w-full rounded-full text-sm focus:border-zinc-500 focus:outline-none px-4"
             onChange={(e) => setQuery(e.target.value)}
             placeholder={`Search for Symptoms`}
             onFocus={() => setPage(0)}
@@ -94,10 +118,13 @@ const SymptomDisplay = () => {
             x
           </button>
         </section>
+       
       </span>
+
+
       <section className="flex lg:w-2/3 items-center flex-col border select-none">
         {loading && (
-          <div className=" space-y-8 p-10 justify-center flex flex-col w-full h-screen items-center animate-pulse">
+          <div className="space-y-8 p-10 justify-center flex flex-col w-full h-screen items-center animate-pulse">
             <Skeleton className="h-4 w-[200px] rounded-full" />
             <Skeleton className="h-4 w-[200px] rounded-full" />
             <Skeleton className="h-4 w-[200px] rounded-full" />
@@ -112,15 +139,15 @@ const SymptomDisplay = () => {
               key={s.id}
               className={`hover:bg-zinc-800/20 py-3 border-b items-center hover:border-zinc-500 hover:text-zinc-300 w-full justify-between flex rounded-lg border-zinc-800 hover:border text-zinc-500 active:ml-5 ${
                 index % 2 === 1 ? "bg-zinc-950" : ""
-              } ${isFetching ? "pointer-events-none opacity-50" : ""}`} // Disable and style other links when fetching
+              } ${isFetching ? "pointer-events-none opacity-50" : ""}`}
               onClick={() => {
-                setFetchingItemId(s.id); // Set fetchingItemId to current item's ID
-                setIsFetching(true); // Set isFetching to true
+                setFetchingItemId(s.id);
+                setIsFetching(true);
               }}
             >
               <div className="flex items-center space-x-3 px-5">
-                <p>{s.title}</p>{" "}
-                {fetchingItemId === s.id && ( // Show loader only for the fetching item
+                <p>{s.title}</p>
+                {fetchingItemId === s.id && (
                   <svg
                     aria-hidden="true"
                     className="inline w-5 h-5 text-zinc-800 animate-spin dark:text-zinc-800 fill-zinc-800 dark:fill-zinc-600"
@@ -140,73 +167,55 @@ const SymptomDisplay = () => {
                 )}
               </div>
               <div className="px-5 flex space-x-2">
-              {/* Consider placing other details such as difficulty and specialty in here. Check this if there is any errors, consdiser tossign the admin stuyff out if there is any isseu*/}
-
-              {/* Place switch statement here */}
-              {s.symptomjson?.difficulty ? (
-                <>
-                  {" "}
-                  {(() => {
-                    switch (s.symptomjson.difficulty) {
-                      case "easy":
-                        return (
-                          <p className="bg-green-950/80 rounded-xl border border-green-600 text-green-600 text-xs px-1">
-                            Basic
-                          </p>
-                        );
-                      case "intermediate":
-                        return (
-                          <p className="bg-yellow-950/80 rounded-xl border border-yellow-600 text-yellow-600 text-xs px-1">
-                            Intermediate
-                          </p>
-                        );
-                      case "advanced":
-                        return (
-                          <p className="bg-red-950/80 rounded-xl border border-red-600 text-red-600 text-xs px-1">
-                            Advanced
-                          </p>
-                        );
-                      default:
-                        return null;
+                {showDifficulty && s.symptomjson?.difficulty && (
+                  <>
+                    {(() => {
+                      switch (s.symptomjson.difficulty) {
+                        case "easy":
+                          return (
+                            <p className="bg-green-950/80 rounded-xl border border-green-600 text-green-600 text-xs px-1">
+                              Basic
+                            </p>
+                          );
+                        case "intermediate":
+                          return (
+                            <p className="bg-yellow-950/80 rounded-xl border border-yellow-600 text-yellow-600 text-xs px-1">
+                              Intermediate
+                            </p>
+                          );
+                        case "advanced":
+                          return (
+                            <p className="bg-red-950/80 rounded-xl border border-red-600 text-red-600 text-xs px-1">
+                              Advanced
+                            </p>
+                          );
+                        default:
+                          return null;
                       }
                     })()}
-                </>
-              ) : (
-                ""
-              )}
-              {s.symptomjson?.isHighYield ? (
-                <p className="bg-red-950/80 rounded-xl border border-red-700 text-red-700 text-xs px-1">
-                  High Yield
-                </p>
-              ) : (
-                ""
-              )}
+                  </>
+                )}
 
-              {s.symptomjson?.specialty ? (
-                <>
-           
-                          <p className=" rounded-xl border border-blue-500 text-blue-500 bg-blue-950/50 text-xs px-1">
-                            {s.symptomjson.specialty}</p>
-                      
-                </>
-              ) : (
-                ""
-              )}
-              
+                {showHighYield && s.symptomjson?.isHighYield && (
+                  <p className="bg-red-950/80 rounded-xl border border-red-700 text-red-700 text-xs px-1">
+                    High Yield
+                  </p>
+                )}
+
+                {showSpecialty && s.symptomjson?.specialty && (
+                  <p className="rounded-xl border border-blue-500 text-blue-500 bg-blue-950/50 text-xs px-1">
+                    {s.symptomjson.specialty}
+                  </p>
+                )}
               </div>
-
             </Link>
           ))}
-        {displayedResults?.length === 0 ? (
+        {displayedResults?.length === 0 && (
           <h3 className="text-xl text-zinc-500 p-10">No results found</h3>
-        ) : (
-          ""
         )}
         <footer className="flex gap-2 items-center justify-center">
           <button
-            onClick={() => {
-              setPage(page - 1);
-            }}
+            onClick={() => setPage(page - 1)}
             className={`p-5 ${page === 0 ? "invisible" : ""}`}
             disabled={page === 0}
           >
@@ -214,9 +223,7 @@ const SymptomDisplay = () => {
           </button>
           <h2 className="text-zinc-500">Page {page + 1}</h2>
           <button
-            onClick={() => {
-              setPage(page + 1);
-            }}
+            onClick={() => setPage(page + 1)}
             className={`p-5 ${page + 1 === maxPages ? "invisible" : ""}`}
             disabled={page + 1 === maxPages}
           >

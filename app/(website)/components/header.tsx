@@ -84,7 +84,7 @@ export function Header() {
       ),
       children: [
         {
-          path: "/overview",
+          path: "#overview",
           title: "Overview",
           icon: <BarChart size={20} />,
         },
