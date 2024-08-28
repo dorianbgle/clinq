@@ -9,6 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { CgDanger } from "react-icons/cg";
 
 export const revalidate = 60;
 
@@ -64,17 +65,22 @@ export default async function Case({
                   </AccordionItem>
                 </Accordion>
 
-{i?.symptomjson?.pathophysiology ? 
-                <Accordion type="single" collapsible defaultValue="item-1">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>Symptom Pathophysiology</AccordionTrigger>
-                    <AccordionContent>
-                      <p className="text-md leading-6 text-justify">
-                        <Markdown>{i?.symptomjson?.pathophysiology}</Markdown>
-                      </p>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion> : ""}
+                {i?.symptomjson?.pathophysiology ? (
+                  <Accordion type="single" collapsible>
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        Symptom Pathophysiology
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <p className="text-md leading-6 text-justify">
+                          <Markdown>{i?.symptomjson?.pathophysiology}</Markdown>
+                        </p>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ) : (
+                  ""
+                )}
 
                 <Accordion type="single" collapsible>
                   <AccordionItem value="item-1">
@@ -136,6 +142,7 @@ export default async function Case({
                                   }
                                 })()}
                                 {d?.condition && d?.condition}
+                                {d?.threat? <div className="text-sm flex items-center gap-2 border border-orange-400 text-orange-400"><CgDanger /> Life-Threatening</div> : ""}
                               </div>
                               {d?.characteristics ? (
                                 <div className="border p-3 hidden sm:flex">
