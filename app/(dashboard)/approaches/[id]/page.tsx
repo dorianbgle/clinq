@@ -64,6 +64,18 @@ export default async function Case({
                   </AccordionItem>
                 </Accordion>
 
+{i?.symptomjson?.pathophysiology ? 
+                <Accordion type="single" collapsible defaultValue="item-1">
+                  <AccordionItem value="item-1">
+                    <AccordionTrigger>Symptom Pathophysiology</AccordionTrigger>
+                    <AccordionContent>
+                      <p className="text-md leading-6 text-justify">
+                        <Markdown>{i?.symptomjson?.pathophysiology}</Markdown>
+                      </p>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion> : ""}
+
                 <Accordion type="single" collapsible>
                   <AccordionItem value="item-1">
                     <AccordionTrigger>Differentials</AccordionTrigger>
