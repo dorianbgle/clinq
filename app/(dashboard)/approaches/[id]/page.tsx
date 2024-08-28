@@ -142,7 +142,7 @@ export default async function Case({
                                   }
                                 })()}
                                 {d?.condition && d?.condition}
-                                {d?.threat? <div className="text-sm flex items-center gap-2 border border-orange-400 text-orange-400"><CgDanger /> Life-Threatening</div> : ""}
+                                {d?.threat? <div className="text-xs flex items-center gap-2 border border-orange-400 text-orange-400 rounded-xl bg-orange-900/20 px-1"><CgDanger /> Life-Threatening</div> : ""}
                               </div>
                               {d?.characteristics ? (
                                 <div className="border p-3 hidden sm:flex">
