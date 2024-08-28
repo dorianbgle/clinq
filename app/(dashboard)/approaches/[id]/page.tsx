@@ -139,14 +139,14 @@ export default async function Case({
                               </div>
                               {d?.characteristics ? (
                                 <div className="border p-3 hidden sm:flex">
-                                  {d?.characteristics}
+                                  <Markdown>{d?.characteristics}</Markdown>
                                 </div>
                               ) : (
                                 ""
                               )}
                               {d.associated_features ? (
                                 <div className="border p-3 hidden sm:flex">
-                                  {d?.associated_features}
+                                  <Markdown>{d?.associated_features}</Markdown>
                                 </div>
                               ) : (
                                 ""
