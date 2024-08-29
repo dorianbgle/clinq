@@ -1,0 +1,7 @@
+/* custom-tree.css */
+
+.node__root > text,
+.node__branch > text,
+.node__leaf > text {
+  fill: white; /* Set the text color to white */
+}

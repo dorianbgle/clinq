@@ -10,6 +10,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { CgDanger } from "react-icons/cg";
+import TreeDiagram from "../../components/TreeDiagram";
 
 export const revalidate = 60;
 
@@ -29,6 +30,7 @@ export default async function Case({
 
   return (
     <>
+    {/* Use nodes for management plan  */}
       <aside className="gap-2 overflow-hidden overflow-y-auto border p-7 md:px-20 select-none">
         <h3 className="flex gap-2 flex-col pb-5">
           {symptoms &&
@@ -263,7 +265,7 @@ export default async function Case({
                         Approach to Management
                       </AccordionTrigger>
                       <AccordionContent>
-                        <p>{i?.symptomjson?.management}</p>
+                        <p>{i?.symptomjson?.management} <TreeDiagram /></p>
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>
