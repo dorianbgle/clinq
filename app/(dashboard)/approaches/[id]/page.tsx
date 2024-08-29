@@ -265,7 +265,8 @@ export default async function Case({
                         Approach to Management
                       </AccordionTrigger>
                       <AccordionContent>
-                        <p>{i?.symptomjson?.management} <TreeDiagram /></p>
+                      {/* {i?.symptomjson?.management} */}
+                        <p> <TreeDiagram /></p>
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>

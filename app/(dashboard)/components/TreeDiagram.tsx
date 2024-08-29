@@ -1,40 +1,64 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
-import './tree-diagram-styles.css'
+import './tree-diagram-styles.css';
 
 // Dynamically import Tree with SSR disabled
 const Tree = dynamic(() => import('react-d3-tree'), { ssr: false });
 
-const Data = {
+// Define types for the node data
+interface NodeAttributes {
+  [key: string]: string;
+}
+
+interface NodeData {
+  name: string;
+  attributes?: NodeAttributes;
+  children?: NodeData[];
+  nodeSvgShape?: {
+    shape: string;
+    shapeProps: {
+      fill: string;
+      width?: number;
+      height?: number;
+      x?: number;
+      y?: number;
+    };
+  };
+  styles?: {
+    node: {
+      name: { fill: string };
+    };
+  };
+}
+
+// Define the data structure
+const Data: NodeData = {
   name: 'Exclude Red Flags',
-  attributes: {
-    keyA: 'Pneumothorax',
-    keyB: 'Myocardial Infarction',
-    keyC: 'val 3',
+  styles: {
+    node: {
+      name: { fill: '#FFFFFF' }, // Set text color to white
+    },
   },
   children: [
     {
-      name: 'Parent Node',
-      attributes: {
-        keyA: 'val A',
-        keyB: 'val B',
-        keyC: 'val C',
-      },
+      name: 'Targeted Hx/PES',
+  
       nodeSvgShape: {
-        shape: 'rect', 
+        shape: 'rect',
         shapeProps: {
           fill: 'blue',
+        },
+      },
+      styles: {
+        node: {
+          name: { fill: '#FFFFFF' }, // Set text color to white
         },
       },
       children: [
         {
           name: 'Inner Node',
-          attributes: {
-            keyA: 'val A',
-            keyB: 'val B',
-            keyC: 'val C',
-          },
+         
           nodeSvgShape: {
             shape: 'rect',
             shapeProps: {
@@ -45,37 +69,66 @@ const Data = {
               fill: 'green',
             },
           },
+          styles: {
+            node: {
+              name: { fill: '#FFFFFF' }, // Set text color to white
+            },
+          },
         },
         {
           name: 'Level 2: B',
+          styles: {
+            node: {
+              name: { fill: '#FFFFFF' }, // Set text color to white
+            },
+          },
         },
       ],
     },
   ],
 };
 
-const TreeDiagram = () => {
-  // const [isClient, setIsClient] = useState(false);
+const TreeDiagram: React.FC = () => {
+  // State to keep track of the selected node's data
+  const [selectedNode, setSelectedNode] = useState<NodeData | null>(null);
 
-  // // Ensure the component is only rendered on the client side
-  // useEffect(() => {
-  //   setIsClient(true);
-  // }, []);
-
-  // if (!isClient) {
-  //   // Render nothing on the server side
-  //   return null;
-  // }
+  // Define the function to handle node clicks
+  const handleNodeClick = (nodeData: any): void => {
+    setSelectedNode(nodeData);
+  };
 
   return (
     <div className="w-full h-96">
       <Tree
         data={Data}
         orientation="horizontal"
-        rootNodeClassName="node__root" // Apply custom class for root node
-        branchNodeClassName="node__branch" // Apply custom class for branch nodes
-        leafNodeClassName="node__leaf" // Apply custom class for leaf nodes
+        translate={{ x: 150, y: 150 }}
+        rootNodeClassName="node__root"
+        branchNodeClassName="node__branch"
+        leafNodeClassName="node__leaf"
+        pathFunc="step"
+        // Use the built-in `nodeSize` and `separation` props for layout adjustment if necessary
+        // Define the onClick function directly inside the data structure for each node
       />
+      {selectedNode && selectedNode.attributes && (
+        <div
+          className="attribute-box"
+          style={{
+            position: 'absolute',
+            top: (selectedNode as any).y + 100, // Type assertion used for 'y' property
+            left: (selectedNode as any).x, // Type assertion used for 'x' property
+          }}
+        >
+          <h4>Node Attributes:</h4>
+          <ul>
+            {Object.entries(selectedNode.attributes).map(([key, value]) => (
+              <li key={key}>
+                <strong>{key}</strong>: {value}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
