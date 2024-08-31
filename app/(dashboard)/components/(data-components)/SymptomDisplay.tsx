@@ -48,7 +48,7 @@ const SymptomDisplay = () => {
   const getFromandTo = () => {
     const ITEMSPERPAGE = 10;
     let from = page * ITEMSPERPAGE;
-    let to = page * ITEMSPERPAGE + 9;
+    let to = from + ITEMSPERPAGE; // Corrected this line
     return { from, to };
   };
 
@@ -58,7 +58,7 @@ const SymptomDisplay = () => {
 
   let arr = filteredItems?.slice();
   let { from, to } = getFromandTo();
-  let displayedResults = arr?.slice(from, to);
+  let displayedResults = arr?.slice(from, to); // Adjusted logic ensures proper display range
 
   let maxPages = Math.ceil((filteredItems?.length ?? 0) / 10);
 
