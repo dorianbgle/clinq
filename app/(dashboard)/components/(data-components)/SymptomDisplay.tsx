@@ -27,7 +27,7 @@ const SymptomDisplay = () => {
   const [isFetching, setIsFetching] = useState(false); // Track if any item is being fetched
   const [page, setPage] = useState(0);
   const [query, setQuery] = useState("");
-  const [showHighYield, setShowHighYield] = useState(false);
+  const [showHighYield, setShowHighYield] = useState(true);
   const [showSpecialty, setShowSpecialty] = useState(false);
   const [showDifficulty, setShowDifficulty] = useState(false);
 
@@ -72,7 +72,7 @@ const SymptomDisplay = () => {
   return (
     <>
       {/* Switches to toggle visibility */}
-      <span className="py-5 gap-2 flex flex-col md:w-2/3 select-none">
+      <span className="py-5 gap-2 flex flex-col select-none">
         <h1 className="text-2xl">Approaches</h1>
         <h3 className="text-zinc-500">
           Study our approaches section to formulate your own approach to each symptom
@@ -122,7 +122,7 @@ const SymptomDisplay = () => {
       </span>
 
 
-      <section className="flex lg:w-2/3 items-center flex-col border select-none">
+      <section className="flex items-center flex-col border select-none">
         {loading && (
           <div className="space-y-8 p-10 justify-center flex flex-col w-full h-screen items-center animate-pulse">
             <Skeleton className="h-4 w-[200px] rounded-full" />
