@@ -30,7 +30,7 @@ export default async function Case({
 
   return (
     <>
-    {/* Use nodes for management plan  */}
+      {/* Use nodes for management plan  */}
       <aside className="gap-2 overflow-hidden overflow-y-auto border p-7 md:px-20 select-none">
         <h3 className="flex gap-2 flex-col pb-5">
           {symptoms &&
@@ -144,7 +144,13 @@ export default async function Case({
                                   }
                                 })()}
                                 {d?.condition && d?.condition}
-                                {d?.threat? <div className="text-xs flex items-center gap-2 border border-orange-400 text-orange-400 rounded-xl bg-orange-900/20 px-1"><CgDanger /> Life-Threatening</div> : ""}
+                                {d?.threat ? (
+                                  <div className="text-xs flex items-center gap-2 border border-orange-400 text-orange-400 rounded-xl bg-orange-900/20 px-1">
+                                    <CgDanger /> Life-Threatening
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
                               </div>
                               {d?.characteristics ? (
                                 <div className="border p-3 hidden sm:flex">
@@ -198,18 +204,36 @@ export default async function Case({
                         {Array.isArray(i?.historyjson) ? (
                           i.historyjson.map((d: any, index: number) => (
                             <>
-                              <section className="grid grid-cols-1 lg:grid-cols-5">
-                                <div className="col-span-1 uppercase font-semibold border p-5 dotted-bg text-base">
-                                  {d?.question}
-                                </div>
-                                <div className="col-span-2 p-5 border text-justify">
-                                  {d?.overview}
+                              <div key={index} className="flex items-start">
+                                {/* Step number indicator */}
+                                <div className="flex flex-col items-center space-x-5 space-y-5">
+                                  <div className="w-8 h-8 flex items-center justify-center rounded-full border-2 border-blue-500 font-semibold">
+                                    {index + 1}
+                                  </div>
                                 </div>
 
-                                <div className="col-span-2 p-5 border text-justify">
-                                  <Markdown>{d?.description}</Markdown>
+                                {/* Step content */}
+                                <div className="ml-4 pb-3 gap-3 flex flex-col">
+                                  {/* Heading area */}
+                                    <div className="font-bold text-white uppercase text-xl">
+                                      {d?.question}
+                                    </div>
+                                    <div className="text-white mt-2">
+                                      {d?.overview}
+                                    </div>
+
+                                  <div className="p-4 text-white shadow w-full border rounded-xl">
+                                    <div className="font-bold text-white">
+                                      {d?.heading}
+                                    </div>
+                                    {/* Area 4: d?.question */}
+                                    <div className="p-3 text-white">
+                                      <Markdown>{d?.description}</Markdown>
+                                    </div>
+                                    {/* Area 5: d?.overview */}
+                                  </div>
                                 </div>
-                              </section>
+                              </div>
                             </>
                           ))
                         ) : (
@@ -230,7 +254,42 @@ export default async function Case({
                         {Array.isArray(i?.pesjson) ? (
                           i?.pesjson?.map((d: any, index: number) => (
                             <>
-                              <div className="space-y-5">
+
+{index === 0 && (
+                                  <div className="border p-5 bg-green-800/20 rounded-xl border-green-800 text-green-700">
+                                    {d?.summary}
+                                  </div>
+                                )}
+
+<div key={index} className="flex items-start pt-10">
+                                {/* Step number indicator */}
+                                <div className="flex flex-col items-center space-x-5 space-y-5">
+                                  <div className="w-8 h-8 flex items-center justify-center rounded-full border-2 border-blue-500 font-semibold">
+                                    {index + 1}
+                                  </div>
+                                </div>
+
+                                {/* Step content */}
+                                <div className="ml-4 pb-3 gap-3 flex flex-col">
+                                  {/* Heading area */}
+                                    <div className="font-bold text-white uppercase text-xl">
+                                    {d?.subheading}
+                                    </div>
+
+                                  <div className="p-4 text-white shadow w-full border rounded-xl">
+                            
+                                    {/* Area 4: d?.question */}
+                                    <div className="p-3 text-white">
+                                      <Markdown>{d?.description}</Markdown>
+                                    </div>
+                                    {/* Area 5: d?.overview */}
+                                  </div>
+                                </div>
+                              </div>
+
+
+
+                              {/* <div className="space-y-5">
                                 {index === 0 && (
                                   <div className="border p-5 bg-green-800/20 rounded-xl border-green-800 text-green-700">
                                     {d?.summary}
@@ -245,7 +304,7 @@ export default async function Case({
                                     <Markdown>{d?.description}</Markdown>
                                   </div>
                                 </section>
-                              </div>
+                              </div> */}
                             </>
                           ))
                         ) : (
@@ -265,8 +324,11 @@ export default async function Case({
                         Approach to Management
                       </AccordionTrigger>
                       <AccordionContent>
-                      {/* {i?.symptomjson?.management} */}
-                        <p> <TreeDiagram /></p>
+                        {/* {i?.symptomjson?.management} */}
+                        <p>
+                          {" "}
+                          <TreeDiagram />
+                        </p>
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>

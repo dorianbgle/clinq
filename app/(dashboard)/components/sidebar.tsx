@@ -14,8 +14,10 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { PiApertureDuotone } from "react-icons/pi";
+import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
+import { useState } from "react";
 
-const sideLinks = [
+const initialLinks = [
   {
     name: "Dashboard",
     path: "/dashboard",
@@ -49,42 +51,76 @@ const sideLinks = [
 ];
 
 const Sidebar = () => {
+  const [sideLinks, setSideLinks] = useState(initialLinks);
   const pathname = usePathname();
-  const checkActivePath = (path: string) => {
-    return pathname.startsWith(path);
+
+  const checkActivePath = (path: string) => pathname.startsWith(path);
+
+  const onDragEnd = (result: any) => {
+    const { source, destination } = result;
+
+    if (!destination) return;
+
+    const reorderedLinks = Array.from(sideLinks);
+    const [movedLink] = reorderedLinks.splice(source.index, 1);
+    reorderedLinks.splice(destination.index, 0, movedLink);
+
+    setSideLinks(reorderedLinks);
   };
 
   return (
-    <>
-    <Link className="py-2" href={"/"}>
-    <PiApertureDuotone className="h-11 w-11"/>
-    </Link>
-    <hr className="w-10"/>
-      {sideLinks.map(({ path, id, icon, name }) => {
-        const Icon = icon;
-        return (
-          <TooltipProvider key={id}>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Link
-                  href={`${path}`}
-                  className={
-                    checkActivePath(path)
-                      ? "bg-zinc-800/80 p-3 border-zinc-700 border relative active:scale-90 items-center flex justify-center"
-                      : " p-3 hover:bg-zinc-800/80 border-zinc-700 hover:border relative active:scale-90"
-                  }
-                >
-                  <Icon className="h-4 w-4"/>
-                </Link>
-              </TooltipTrigger>
-              <TooltipContent className="absolute left-8 top-3">
-                {name}
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        );
-      })}
-    </>
+    <div className="flex flex-col items-center select-none">
+      <Link className="py-2" href={"/"}>
+        <PiApertureDuotone className="h-11 w-11" />
+      </Link>
+      <hr className="w-10" />
+
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId="sideLinks" direction="vertical">
+          {(provided) => (
+            <div
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+              className="flex flex-col items-center space-y-2 w-full pt-5"
+            >
+              {sideLinks.map(({ path, id, icon: Icon, name }, index) => (
+                <Draggable key={id} draggableId={id.toString()} index={index}>
+                  {(provided) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      className="w-full flex justify-center"
+                    >
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Link
+                              href={path}
+                              className={`${
+                                checkActivePath(path)
+                                  ? "bg-zinc-800/80 p-3 border-zinc-700 border relative active:scale-90 items-center flex justify-center w-full"
+                                  : "p-3 hover:bg-zinc-800/80 border-zinc-700 hover:border relative active:scale-90 w-full flex justify-center"
+                              }`}
+                            >
+                              <Icon className="h-4 w-4" />
+                            </Link>
+                          </TooltipTrigger>
+                          <TooltipContent className="absolute left-8 top-3">
+                            {name}
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+    </div>
   );
 };
 

@@ -16,7 +16,7 @@ const Announcement = async () => {
   return (
     <Sheet>
       <SheetTrigger>
-        <div className="rounded-full items-center justify-center border hover:bg-zinc-800 p-1">
+        <div className="rounded-full items-center justify-center border hover:bg-blue-900/40 p-1 hover:text-blue-500 hover:border-blue-500 border-zinc-500 text-zinc-500">
           <CiBellOn className="h-5 w-5" />
         </div>
       </SheetTrigger>
