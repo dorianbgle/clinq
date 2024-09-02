@@ -15,7 +15,7 @@ export default function DashBoard() {
         </div>
       </div> */}
 
-      <article className="w-full px-7 p-5 bg-gradient-to-r large-dotted-bg md:h-96 h-96 flex flex-col justify-center md:justify-end overflow-clip relative border items-center md:items-start">
+      <article className="w-full px-7 p-5 large-dotted-bg md:h-96 h-96 flex flex-col justify-center md:justify-end overflow-clip relative border items-center md:items-start ">
         <h3 className="text-black/30 md:text-[25rem] sm:-right-12 text-[14rem] font-bold text-end -right-20 md:-right-8 absolute md:-top-16 -z-10">
           ClinQ
         </h3>
@@ -42,10 +42,10 @@ export default function DashBoard() {
           </h3>
         </Link>
 
-        <div className="w-full border-2 p-7 h-80 text-5xl justify-center flex gradient flex-col bg-gradient-to-r from-zinc-900 to-zinc-300 text-transparent bg-clip-text text-end hover:border-zinc-600 delay-300 duration-300 ease-in-out">
+        <div className="w-full border-2 p-7 h-80 text-5xl justify-center flex gradient flex-col bg-gradient-to-r from-zinc-900 to-zinc-300 text-transparent bg-clip-text text-center hover:border-zinc-600 delay-300 duration-300 ease-in-out">
           Prescribing Module <br />
           <span className="items-end flex justify-end">Coming Soon</span>
-          <span className="text-sm justify-center p-1 text-zinc-500">
+          <span className="text-sm justify-end p-1 text-zinc-500 flex">
             Learn More
           </span>
         </div>
