@@ -59,7 +59,7 @@ export default async function Checklists({
 
             return (
               <div key={checklist_name} className="w-full">
-                <h1 className="pt-10 pb-8 flex gap-3 items-center dotted-bg p-6 text-3xl lg:text-4xl xl:text-5xl">
+                <h1 className="pt-10 pb-8 flex gap-3 items-center dotted-bg p-6 text-3xl lg:text-4xl xl:text-5xl justify-between">
                   <Link
                     href={"/checklists"}
                     className="w-8 h-8 flex items-center"
@@ -67,6 +67,7 @@ export default async function Checklists({
                     <FaArrowLeftLong className="hover:text-zinc-800 h-5 w-5" />
                   </Link>
                   {checklist_name} Checklist
+                  
                 </h1>
 
                 {/* Overview Paragraph */}

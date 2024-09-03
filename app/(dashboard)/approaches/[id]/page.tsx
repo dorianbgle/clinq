@@ -215,12 +215,12 @@ export default async function Case({
                                 {/* Step content */}
                                 <div className="ml-4 pb-3 gap-3 flex flex-col">
                                   {/* Heading area */}
-                                    <div className="font-bold text-white uppercase text-xl">
-                                      {d?.question}
-                                    </div>
-                                    <div className="text-white mt-2">
-                                      {d?.overview}
-                                    </div>
+                                  <div className="font-bold text-white uppercase text-xl">
+                                    {d?.question}
+                                  </div>
+                                  <div className="text-white mt-2">
+                                    {d?.overview}
+                                  </div>
 
                                   <div className="p-4 text-white shadow w-full border rounded-xl">
                                     <div className="font-bold text-white">
@@ -254,14 +254,16 @@ export default async function Case({
                         {Array.isArray(i?.pesjson) ? (
                           i?.pesjson?.map((d: any, index: number) => (
                             <>
+                              {index === 0 && (
+                                <div className="border p-5 bg-green-800/20 rounded-xl border-green-800 text-green-700">
+                                  {d?.summary}
+                                </div>
+                              )}
 
-{index === 0 && (
-                                  <div className="border p-5 bg-green-800/20 rounded-xl border-green-800 text-green-700">
-                                    {d?.summary}
-                                  </div>
-                                )}
-
-<div key={index} className="flex items-start pt-10">
+                              <div
+                                key={index}
+                                className="flex items-start pt-10"
+                              >
                                 {/* Step number indicator */}
                                 <div className="flex flex-col items-center space-x-5 space-y-5">
                                   <div className="w-8 h-8 flex items-center justify-center rounded-full border-2 border-blue-500 font-semibold">
@@ -272,12 +274,11 @@ export default async function Case({
                                 {/* Step content */}
                                 <div className="ml-4 pb-3 gap-3 flex flex-col">
                                   {/* Heading area */}
-                                    <div className="font-bold text-white uppercase text-xl">
+                                  <div className="font-bold text-white uppercase text-xl">
                                     {d?.subheading}
-                                    </div>
+                                  </div>
 
                                   <div className="p-4 text-white shadow w-full border rounded-xl">
-                            
                                     {/* Area 4: d?.question */}
                                     <div className="p-3 text-white">
                                       <Markdown>{d?.description}</Markdown>
@@ -286,8 +287,6 @@ export default async function Case({
                                   </div>
                                 </div>
                               </div>
-
-
 
                               {/* <div className="space-y-5">
                                 {index === 0 && (
@@ -391,6 +390,10 @@ export default async function Case({
                     <AccordionTrigger>References</AccordionTrigger>
                     <AccordionContent>
                       <>
+                        <section className="p-5 w-full bg-green-800/20 border border-green-800 rounded-xl text-green-800 mb-3">
+                          <h1>Reviewed by <strong>Dorian Le</strong></h1>
+                          <>{i?.symptomjson?.comments ? <div><Markdown>{i.symptomjson?.comments}</Markdown></div>: <p className="flex justify-center text-xl">"Review yet to be completed"</p>}</>
+                        </section>
                         <div className="border p-5 rounded-xl dotted-bg">
                           <Markdown>
                             {i?.symptomjson?.references
