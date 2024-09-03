@@ -392,7 +392,7 @@ export default async function Case({
                       <>
                         <section className="p-5 w-full bg-green-800/20 border border-green-800 rounded-xl text-green-800 mb-3">
                           <h1>Reviewed by <strong>Dorian Le</strong></h1>
-                          <>{i?.symptomjson?.comments ? <div><Markdown>{i.symptomjson?.comments}</Markdown></div>: <p className="flex justify-center text-xl">"Review yet to be completed"</p>}</>
+                          <>{i?.symptomjson?.comments ? <div><Markdown>{i.symptomjson?.comments}</Markdown></div>: <p className="flex justify-center text-xl">&quot;Review yet to be completed&quot;</p>}</>
                         </section>
                         <div className="border p-5 rounded-xl dotted-bg">
                           <Markdown>
