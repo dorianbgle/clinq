@@ -1,5 +1,8 @@
 "use client";
 
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { Button } from "../../../components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -7,13 +10,24 @@ import { usePathname } from "next/navigation";
 export function FooterCTA() {
   const pathname = usePathname();
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Duration of the animation in milliseconds
+      easing: "ease-out", // Easing function for the animation
+      once: true, // Whether animation should happen only once or every time you scroll up and down
+    });
+  }, []);
+
   if (pathname.includes("pitch")) {
     return null;
   }
 
   return (
     <div className="border border-border md:container text-center px-10 py-14 mx-4 md:mx-auto md:px-24 md:py-20 mb-32 mt-24 flex items-center flex-col bg-[#121212]">
-      <span className="text-6xl	md:text-8xl font-medium text-white">
+      <span
+        className="text-6xl md:text-8xl font-medium text-white"
+        data-aos="fade" // Changed to "fade" for simple fade-in effect
+      >
         Study smarter with ClinQ.
       </span>
       <p className="text-[#878787] mt-6">
