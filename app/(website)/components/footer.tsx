@@ -1,5 +1,8 @@
 "use client";
 
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { SubscribeInput } from "./subscribe-input";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -7,6 +10,14 @@ import { StatusWidget } from "./(homepage-components)/status-widget";
 
 export function Footer() {
   const pathname = usePathname();
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Duration of the animation in milliseconds
+      easing: "ease-out", // Easing function for the animation
+      once: true, // Whether animation should happen only once or every time you scroll up and down
+    });
+  }, []);
 
   if (pathname.includes("pitch")) {
     return null;
@@ -20,9 +31,7 @@ export function Footer() {
             ClinQ
           </Link>
 
-          <span className="md:text-2xl text-right">
-            Study medicine smarter
-          </span>
+          <span className="md:text-2xl text-right">Study medicine smarter</span>
         </div>
 
         <div className="flex flex-col md:flex-row w-full">
@@ -84,8 +93,6 @@ export function Footer() {
 
           <div className="md:w-6/12 flex mt-8 md:mt-0 md:justify-end">
             <div className="flex md:items-end flex-col">
-
-
               <div className="mb-8">
                 <SubscribeInput group="news" />
               </div>
@@ -97,7 +104,10 @@ export function Footer() {
         </div>
       </div>
 
-      <h5 className="text-[#161616] text-[500px] leading-none text-center pointer-events-none font-bold">
+      <h5
+        className="text-[#161616] text-[500px] leading-none text-center pointer-events-none font-bold"
+        data-aos="fade-up" // Apply AOS animation here
+      >
         ClinQ
       </h5>
     </footer>

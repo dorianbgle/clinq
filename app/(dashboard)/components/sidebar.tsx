@@ -16,6 +16,7 @@ import {
 import { PiApertureDuotone } from "react-icons/pi";
 import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 import { useState } from "react";
+import { IoSearchSharp } from "react-icons/io5";
 
 const initialLinks = [
   {
@@ -47,6 +48,12 @@ const initialLinks = [
     path: "/cases",
     icon: GoBriefcase,
     id: 7,
+  },
+  {
+    name: "Search",
+    path: "/search",
+    icon: IoSearchSharp,
+    id: 8,
   },
 ];
 
