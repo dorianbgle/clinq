@@ -88,7 +88,7 @@ const Sidebar = () => {
             <div
               {...provided.droppableProps}
               ref={provided.innerRef}
-              className="flex flex-col items-center space-y-2 w-full pt-5"
+              className="flex flex-col items-center space-y-2 w-full pt-5 "
             >
               {sideLinks.map(({ path, id, icon: Icon, name }, index) => (
                 <Draggable key={id} draggableId={id.toString()} index={index}>
@@ -113,7 +113,7 @@ const Sidebar = () => {
                               <Icon className="h-4 w-4" />
                             </Link>
                           </TooltipTrigger>
-                          <TooltipContent className="absolute left-8 top-3">
+                          <TooltipContent className="absolute left-8 top-3 z-20">
                             {name}
                           </TooltipContent>
                         </Tooltip>

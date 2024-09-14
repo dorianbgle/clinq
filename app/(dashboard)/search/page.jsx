@@ -2,90 +2,6 @@
 
 import { useState, useEffect } from "react";
 import supabase from "@/packages/lib/supabase/client";
-import { MdErrorOutline } from "react-icons/md"; // Import the icon
-
-// Conditions data with associated symptoms and rarity
-const conditionsData = [
-  {
-    id: 1,
-    name: "Flu",
-    symptoms: ["Fever", "Cough", "Fatigue", "Sore Throat"],
-    rarity: "common",
-  },
-  {
-    id: 2,
-    name: "Migraine",
-    symptoms: ["Headache", "Nausea", "Dizziness"],
-    rarity: "uncommon",
-  },
-  {
-    id: 3,
-    name: "COVID-19",
-    symptoms: ["Fever", "Cough", "Shortness of Breath", "Fatigue"],
-    rarity: "common",
-  },
-  {
-    id: 4,
-    name: "Heart Attack",
-    symptoms: ["Chest Pain", "Shortness of Breath", "Fatigue"],
-    rarity: "rare",
-  },
-  {
-    id: 5,
-    name: "Back Strain",
-    symptoms: ["Back Pain", "Fatigue"],
-    rarity: "common",
-  },
-  {
-    id: 6,
-    name: "Pneumonia",
-    symptoms: ["Cough", "Fever", "Shortness of Breath", "Chest Pain"],
-    rarity: "common",
-  },
-  {
-    id: 7,
-    name: "Asthma",
-    symptoms: ["Wheeze", "Shortness of Breath", "Chest Tightness", "Cough"],
-    rarity: "common",
-  },
-  {
-    id: 8,
-    name: "Appendicitis",
-    symptoms: ["Abdominal Pain (RLQ)", "Nausea", "Vomiting", "Fever"],
-    rarity: "uncommon",
-  },
-  {
-    id: 9,
-    name: "Diabetes",
-    symptoms: ["Frequent Urination", "Increased Thirst", "Fatigue", "Blurred Vision"],
-    rarity: "common",
-  },
-  {
-    id: 10,
-    name: "Kidney Stones",
-    symptoms: ["Flank Pain", "Blood in Urine", "Nausea", "Vomiting"],
-    rarity: "uncommon",
-  },
-  {
-    id: 11,
-    name: "Chickenpox",
-    symptoms: ["Fever", "Skin Lesions", "Fatigue", "Itchiness"],
-    rarity: "rare",
-  },
-  {
-    id: 12,
-    name: "Hypertension",
-    symptoms: ["Headache", "Fatigue", "Dizziness", "Shortness of Breath"],
-    rarity: "common",
-  },
-  {
-    id: 13,
-    name: "Gastroenteritis",
-    symptoms: ["Diarrhoea", "Nausea", "Vomiting", "Abdominal Pain"],
-    rarity: "common",
-  },
-];
-
 
 // Quick start symptoms
 const quickStartSymptoms = ["Fever", "Chest Pain", "Headache", "Abdominal Pain", "Haematuria"];
@@ -93,9 +9,12 @@ const quickStartSymptoms = ["Fever", "Chest Pain", "Headache", "Abdominal Pain",
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [symptomsData, setSymptomsData] = useState([]);
+  const [conditionsData, setConditionsData] = useState([]);
   const [filteredSymptoms, setFilteredSymptoms] = useState([]);
   const [selectedSymptoms, setSelectedSymptoms] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loadingSymptoms, setLoadingSymptoms] = useState(true);
+  const [loadingConditions, setLoadingConditions] = useState(true);
+  const [showGuide, setShowGuide] = useState(false); // State to control guide visibility
 
   // Fetch symptoms from Supabase
   const getSymptoms = async () => {
@@ -113,11 +32,26 @@ export default function Home() {
       }));
       setSymptomsData(formattedSymptoms);
     }
-    setLoading(false);
+    setLoadingSymptoms(false);
+  };
+
+  // Fetch conditions from Supabase
+  const getConditions = async () => {
+    const { data, error } = await supabase
+      .from("allconditions")
+      .select("id, name, symptoms, rarity");
+
+    if (error) {
+      console.error("Error fetching conditions:", error);
+    } else {
+      setConditionsData(data);
+    }
+    setLoadingConditions(false);
   };
 
   useEffect(() => {
     getSymptoms();
+    getConditions();
   }, []);
 
   const handleInputChange = (e) => {
@@ -200,14 +134,15 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col items-start justify-start gap-2 py-5 select-none">
-      <div className="w-full relative">
-        <h1 className="text-2xl md:text-2xl">Condition Search</h1>
-        <h2 className="text-zinc-500 pb-3 text-sm md:text-base">
-          Search Conditions by any symptoms specified
-        </h2>
 
-        {/* Conditionally render the input field or a loading message */}
-        {loading ? (
+      <h1 className="text-2xl md:text-2xl">Condition Search</h1>
+      <h2 className="text-zinc-500 pb-3 text-sm md:text-base">
+        Search Conditions by any symptoms specified
+      </h2>
+
+      {/* Conditionally render the input field or a loading message */}
+      <div className="relative w-full">
+        {loadingSymptoms ? (
           <div className="w-full p-2 border border-zinc-500 bg-transparent text-zinc-500 rounded-2xl shadow-sm flex justify-center">
             <svg
               aria-hidden="true"
@@ -231,13 +166,13 @@ export default function Home() {
             type="text"
             value={searchTerm}
             onChange={handleInputChange}
-            className="w-full p-2 border px-4 text-sm border-gray-600 bg-transparent text-white rounded-2xl shadow-sm focus:outline-none focus:border-zinc-500"
+            className="w-full p-2 border px-4 text-sm border-zinc-600 bg-transparent text-white rounded-2xl shadow-sm focus:outline-none focus:border-zinc-500"
             placeholder="Search symptoms..."
           />
         )}
 
-        {filteredSymptoms.length > 0 && (
-          <div className="border border-zinc-600 mt-1 rounded-lg bg-zinc-800 text-white shadow-lg max-h-60 overflow-y-auto absolute z-10 w-full">
+{filteredSymptoms.length > 0 && (
+          <div className="absolute z-10 w-full mt-1 border rounded-lg bg-zinc-800 text-white shadow-lg max-h-60 overflow-y-auto">
             {filteredSymptoms.map((symptom) => (
               <div
                 key={symptom.id}
@@ -249,88 +184,118 @@ export default function Home() {
             ))}
           </div>
         )}
+      </div>
+
 
           {selectedSymptoms.length === 0 && (
-            <div className="mt-6">
-              <h3 className="text-lg font-semibold mb-3">Quick Start</h3>
-              <div className="flex flex-wrap gap-2">
-                {quickStartSymptoms.map((symptom, index) => (
-                  <button
-                    key={index}
-                    onClick={() => addQuickStartSymptom(symptom)}
-                    className="bg-zinc-800 hover:bg-yellow-900/10 text-white py-1 px-3 rounded-full text-sm hover:text-yellow-600 hover:border border-yellow-600"
-                  >
-                    {symptom}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-          
-          <div className="mt-4 flex flex-wrap w-full justify-start">
-  {selectedSymptoms.length === 0 ? (
-    <div className="flex items-center justify-center mt-5 text-yellow-600 text-sm border border-yellow-600 bg-yellow-900/10 rounded-xl px-3 py-3 w-full">
-      <MdErrorOutline className="text-xl mr-3" />
-      <div>Select from the symptoms to proceed</div>
-    </div>
-  ) : (
-    selectedSymptoms.map((symptom) => (
-      <div
-        key={symptom.id}
-        className="group flex items-center bg-zinc-900 rounded-full px-4 py-2 m-1 text-sm md:text-base transition-all group-hover:bg-red-500"
-      >
-        {symptom.name}
-        <button
-          onClick={() => removeSymptom(symptom.id)}
-          className="ml-2 text-xs hover:text-white rounded-full p-1"
-        >
-          &times;
-        </button>
+       <div className="pt-3 flex items-center w-full">
+       <div className="flex flex-wrap gap-2 py-2">
+         {quickStartSymptoms.map((symptom, index) => (
+           <button
+             key={index}
+             onClick={() => addQuickStartSymptom(symptom)}
+             className="bg-zinc-800 hover:bg-yellow-900/10 text-sm py-1 px-3 rounded-full hover:text-yellow-600 border hover:border-yellow-600"
+           >
+             {symptom}
+           </button>
+         ))}
+       </div>
+       {/* Spacing for the 'Help' button */}
+       <div className="ml-auto">
+         <button
+           onClick={() => setShowGuide(!showGuide)}
+           className="hover:bg-yellow-900 text-xs text-uppercase rounded-full border bg-yellow-900/10 text-yellow-600 border-yellow-600 px-4 py-2 ml-2"
+         >
+           Help
+         </button>
+       </div>
+     </div>
+     
+     
+      )}
+
+      {/* Show the guide when showGuide is true */}
+      {showGuide && (
+        <div className="flex flex-col items-start justify-center text-yellow-600 text-sm border border-yellow-600 bg-yellow-900/10 rounded-xl px-4 py-4 w-full mt-4">
+          <div className="flex items-center mb-2">
+            <h3 className="text-lg font-semibold">Condition Search Guide</h3>
+          </div>
+          <div className="">
+            <ol className="list-decimal list-inside">
+              <li>Start by selecting a general symptom to explore possible conditions.</li>
+              <li className="mt-2">Add more specific symptoms to narrow down the list.</li>
+              <li className="mt-2">Combine various symptoms to get more accurate suggestions and understand differentials.</li>
+            </ol>
+          </div>
+        </div>
+      )}
+  
+  <div className="mt-4 flex flex-wrap w-full justify-start">
+        {selectedSymptoms.map((symptom) => (
+          <div
+            key={symptom.id}
+            className="group flex items-center bg-zinc-900 rounded-full px-4 py-1 text-sm transition-all group-hover:bg-red-500 gap-2"
+          >
+            {symptom.name}
+            <button
+              onClick={() => removeSymptom(symptom.id)}
+              className="ml-2 text-xs hover:text-white rounded-full p-1"
+            >
+              &times;
+            </button>
+          </div>
+        ))}
       </div>
-    ))
-  )}
-</div>
 
-
-        {/* Quick Start Area */}
 
         {/* Relevant conditions section */}
         {selectedSymptoms.length > 0 && relevantConditions.length > 0 && (
-          <div className="mt-6 border p-3 rounded-xl">
-            <div>
-              {relevantConditions.map((condition) => (
-                <div
-                  key={condition.id}
-                  className={`flex justify-between items-center p-2 px-4 rounded-lg ${getRarityBorderClasses(condition.rarity)}`}
-                >
-                  <div className="text-sm md:text-base">{condition.name}</div>
-                  <div className="flex flex-wrap space-x-1">
-                    {condition.symptoms
-                      .sort((a, b) => a.localeCompare(b))
-                      .map((symptom, index) => {
-                        const isSelected = selectedSymptoms.some(
-                          (s) => s.name === symptom
-                        );
-                        return (
-                          <div
-                            key={index}
-                            className={`px-2 py-1 rounded-full text-xs md:text-sm ${
-                              isSelected
-                                ? "bg-zinc-500 text-white border border-white"
-                                : "bg-zinc-700 text-white"
-                            }`}
-                          >
-                            {symptom}
-                          </div>
-                        );
-                      })}
+  <div className="mt-6 border p-3 rounded-xl w-full py-5">
+    <div>
+      {relevantConditions.map((condition, index) => (
+        <div
+          key={condition.id}
+          className={`flex justify-between items-center p-2 px-4 ${
+            index === 0 ? "rounded-tl-lg" : ""
+          } ${index === relevantConditions.length - 1 ? "rounded-bl-lg" : ""} 
+          ${getRarityBorderClasses(condition.rarity)} ${
+            index % 2 === 1 ? "" : "bg-zinc-950"
+          }`}
+        >
+          <div className="text-md">{condition.name}</div>
+          <div className="flex flex-wrap space-x-1">
+            {condition.symptoms
+              .sort((a, b) => a.localeCompare(b))
+              .map((symptom, index) => {
+                const isSelected = selectedSymptoms.some(
+                  (s) => s.name === symptom
+                );
+                return (
+                  <div
+                    key={index}
+                    className={`px-2 py-1 rounded-full text-xs md:text-sm ${
+                      isSelected
+                        ? "bg-zinc-500 text-white border border-white"
+                        : "bg-zinc-700 text-white"
+                    }`}
+                  >
+                    {symptom}
                   </div>
-                </div>
-              ))}
-            </div>
+                );
+              })}
           </div>
-        )}
-      </div>
+        </div>
+      ))}
+    </div>
+    {/* Centered div with explanatory text */}
+    <div className="text-center mt-4 text-sm text-zinc-500">
+      Colours correlate to the rarity of the condition.
+    </div>
+  </div>
+)}
+
+
+
     </div>
   );
 }
