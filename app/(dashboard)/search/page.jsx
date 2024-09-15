@@ -269,7 +269,7 @@ const toggleSymptomsVisibility = (conditionId) => {
   {relevantConditions.map((condition, index) => (
     <div
       key={condition.id}
-      className={`flex flex-col md:flex-row md:items-center p-2 px-4 ${
+      className={`flex flex-col md:flex-row md:items-center p-1 px-4 ${
         index === 0 ? "rounded-tl-lg" : ""
       } ${index === relevantConditions.length - 1 ? "rounded-bl-lg" : ""}
       ${getRarityBorderClasses(condition.rarity)} ${index % 2 === 1 ? "" : "bg-zinc-950"} space-y-4`}
@@ -280,7 +280,7 @@ const toggleSymptomsVisibility = (conditionId) => {
       </div>
 
       {/* Symptoms and Show More/Less button on the right */}
-      <div className="flex flex-col md:flex-row items-center w-full md:w-auto space-y-2 md:space-y-0 md:space-x-2 md:ml-4">
+      <div className="flex flex-col md:flex-row items-center justify-center w-full md:w-auto space-y-2 md:space-y-0 md:space-x-2 md:ml-4">
         {/* Symptoms */}
         <div
           className={`flex items-center space-x-1 pl-2 md:w-[calc(100%-40px)] ${
