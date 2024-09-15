@@ -77,9 +77,10 @@ const Sidebar = () => {
 
   return (
     <div className="flex flex-col items-center select-none">
-      <Link className="py-2" href={"/"}>
-        <PiApertureDuotone className="h-11 w-11" />
-      </Link>
+      <Link className="py-2 group" href={"/"}>
+  <PiApertureDuotone className="h-11 w-11 transform transition-transform duration-1000 group-hover:rotate-180" />
+</Link>
+
       <hr className="w-10" />
 
       <DragDropContext onDragEnd={onDragEnd}>
