@@ -333,57 +333,67 @@ export default async function Case({
                   </Accordion>
                 )}
 
-                <Accordion type="single" collapsible>
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>Investigations</AccordionTrigger>
-                    <AccordionContent>
-                      <div className="grid xl:grid-cols-2 grid-cols-1 gap-5">
-                        <section className="col-span-1">
-                          <h1 className="w-full dotted-bg text-xl p-5 border uppercase font-semibold">
-                            General Investigations
-                          </h1>
-                          <div className="grid grid-cols-3 ">
-                            {i?.investigationjson ? (
-                              i?.investigationjson?.map((d: any) => (
-                                <>
-                                  <div className="col-span-1 border p-3 uppercase font-semibold">
-                                    {d?.investigation}
-                                  </div>{" "}
-                                  <div className="col-span-2 border p-3 text-justify">
-                                    {d?.description}
-                                  </div>
-                                </>
-                              ))
-                            ) : (
-                              <p className="text-zinc-500">Check back soon</p>
-                            )}{" "}
-                          </div>
-                        </section>
-                        <section className="col-span-1">
-                          <h1 className="w-full dotted-bg text-xl p-5 uppercase font-semibold border">
-                            Specific Investigations
-                          </h1>
-                          <div className="grid grid-cols-3">
-                            {i?.specificinvestigationjson ? (
-                              i?.specificinvestigationjson?.map((d: any) => (
-                                <>
-                                  <div className="col-span-1 border p-3 uppercase font-semibold">
-                                    {d?.investigation}
-                                  </div>{" "}
-                                  <div className="col-span-2 border p-3 text-justify">
-                                    {d?.description}
-                                  </div>
-                                </>
-                              ))
-                            ) : (
-                              <p className="text-zinc-500">Check back soon</p>
-                            )}
-                          </div>
-                        </section>
+{i?.investigationjson?.some((d: any) => d?.investigation && d?.description) ||
+i?.specificinvestigationjson?.some((d: any) => d?.investigation && d?.description) ? (
+  <Accordion type="single" collapsible>
+    <AccordionItem value="item-1">
+      <AccordionTrigger>Investigations</AccordionTrigger>
+      <AccordionContent>
+        <div className="grid xl:grid-cols-2 grid-cols-1 gap-5">
+          {/* General Investigations */}
+          <section className="col-span-1">
+            <h1 className="w-full dotted-bg text-xl p-5 border uppercase font-semibold">
+              General Investigations
+            </h1>
+            <div className="grid grid-cols-3">
+              {i?.investigationjson?.some((d: any) => d?.investigation && d?.description) ? (
+                i?.investigationjson.map((d: any, index: any) =>
+                  d?.investigation && d?.description ? (
+                    <div key={index}>
+                      <div className="col-span-1 border p-3 uppercase font-semibold">
+                        {d.investigation}
                       </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
+                      <div className="col-span-2 border p-3 text-justify">
+                        {d.description}
+                      </div>
+                    </div>
+                  ) : null
+                )
+              ) : (
+                <p className="text-zinc-500">Check back soon</p>
+              )}
+            </div>
+          </section>
+
+          {/* Specific Investigations */}
+          <section className="col-span-1">
+            <h1 className="w-full dotted-bg text-xl p-5 uppercase font-semibold border">
+              Specific Investigations
+            </h1>
+            <div className="grid grid-cols-3">
+              {i?.specificinvestigationjson?.some((d: any) => d?.investigation && d?.description) ? (
+                i?.specificinvestigationjson.map((d: any, index: any) =>
+                  d?.investigation && d?.description ? (
+                    <div key={index}>
+                      <div className="col-span-1 border p-3 uppercase font-semibold">
+                        {d.investigation}
+                      </div>
+                      <div className="col-span-2 border p-3 text-justify">
+                        {d.description}
+                      </div>
+                    </div>
+                  ) : null
+                )
+              ) : (
+                <p className="text-zinc-500">Check back soon</p>
+              )}
+            </div>
+          </section>
+        </div>
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+) : null}
 
                 <Accordion type="single" collapsible>
                   <AccordionItem value="item-1">
