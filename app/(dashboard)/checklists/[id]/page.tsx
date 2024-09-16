@@ -4,29 +4,20 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 
 export const revalidate = 60;
 
-// Define types for the checklist item
 interface ChecklistItem {
   content: string[];
   heading?: string;
   overview?: string;
-  subheading: string;
+  subheading?: string; // Made subheading optional
 }
 
-// Define types for the response from Supabase
 interface ChecklistData {
   checklist_name: string;
   checklistjson: ChecklistItem[];
 }
 
-export default async function Checklists({
-  params: { id },
-}: {
-  params: { id: string };
-}) {
-  const { data: symptoms } = await supabase
-    .from("checklists")
-    .select()
-    .match({ id });
+export default async function Checklists({ params: { id } }: { params: { id: string } }) {
+  const { data: symptoms } = await supabase.from("checklists").select().match({ id });
 
   if (!symptoms) {
     console.log(symptoms);
@@ -59,16 +50,13 @@ export default async function Checklists({
 
             return (
               <div key={checklist_name} className="w-full">
-                <h1 className="pt-10 pb-8 flex gap-3 items-center dotted-bg p-6 text-3xl lg:text-4xl xl:text-5xl justify-between">
-                  <Link
-                    href={"/checklists"}
-                    className="w-8 h-8 flex items-center"
-                  >
+                {/* Header with Centered Checklist Name */}
+                <div className="pt-10 pb-8 relative flex items-center justify-center dotted-bg p-6">
+                  <Link href={"/checklists"} className="absolute left-6 w-8 h-8 flex items-center">
                     <FaArrowLeftLong className="hover:text-zinc-800 h-5 w-5" />
                   </Link>
-                  {checklist_name} Checklist
-                  
-                </h1>
+                  <h1 className="text-3xl lg:text-4xl xl:text-5xl">{checklist_name} Checklist</h1>
+                </div>
 
                 {/* Overview Paragraph */}
                 {checklistjson.map((i: ChecklistItem, idx: number) => (
@@ -88,6 +76,7 @@ export default async function Checklists({
 
                       return (
                         <tr key={index} className="border">
+                          {/* Heading Cell for Desktop View */}
                           {isNewHeading && item.heading && (
                             <td
                               rowSpan={rowSpans[item.heading]}
@@ -97,19 +86,17 @@ export default async function Checklists({
                             </td>
                           )}
 
-                          {/* Responsive layout adjustment for mobile view */}
+                          {/* Mobile View */}
                           <td className="p-5 border align-top uppercase text-sm font-semibold sm:hidden">
                             {isNewHeading && item.heading && (
                               <div className="font-bold py-6 dotted-bg text-xl">{item.heading}</div>
                             )}
-                            <div className="py-5">{item.subheading}</div>
+                            {item.subheading && <div className="py-5">{item.subheading}</div>}
                             <div className="mt-2">
                               {item.content.map((c: string, idx: number) => (
                                 <p
                                   key={idx}
-                                  className={`p-3 ${
-                                    idx % 2 === 0 ? "bg-zinc-950 border" : ""
-                                  }`}
+                                  className={`p-3 ${idx % 2 === 0 ? "bg-zinc-950 border" : ""}`}
                                 >
                                   {c || "This will be filled in soon"}
                                 </p>
@@ -117,18 +104,22 @@ export default async function Checklists({
                             </div>
                           </td>
 
-                          {/* Desktop view */}
-                          <td className="hidden sm:table-cell p-5 border align-top uppercase text-sm font-semibold">
-                            {item.subheading}
-                          </td>
+                          {/* Desktop View Subheading */}
+                          {item.subheading ? (
+                            <td className="hidden sm:table-cell p-5 border align-top uppercase text-sm font-semibold">
+                              {item.subheading}
+                            </td>
+                          ) : null}
 
-                          <td className="hidden sm:table-cell border">
+                          {/* Content Cell for Desktop View */}
+                          <td
+                            className={`hidden sm:table-cell border`}
+                            colSpan={!item.subheading ? 2 : 1} // Set colspan to 2 if subheading is not present
+                          >
                             {item.content.map((c: string, idx: number) => (
                               <p
                                 key={idx}
-                                className={`p-3 ${
-                                  idx % 2 === 0 ? "bg-zinc-950 border" : ""
-                                }`}
+                                className={`p-3 ${idx % 2 === 0 ? "bg-zinc-950 border" : ""}`}
                               >
                                 {c || "This will be filled in soon"}
                               </p>
