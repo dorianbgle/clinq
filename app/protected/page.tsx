@@ -1,10 +1,10 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { getServerSession } from "next-auth/next"; // No need for authOptions
 import { redirect } from "next/navigation";
 import SignOutButton from "@/components/SignOutButton"; // Ensure the correct path for your component
 
 export default async function ProtectedPage() {
-  const session = await getServerSession(authOptions);
+  // Get session information directly without passing authOptions
+  const session = await getServerSession();
 
   // If no session, redirect to the login page
   if (!session) {

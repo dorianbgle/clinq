@@ -10,7 +10,8 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-export const authOptions = {
+// Configure NextAuth
+const handler = NextAuth({
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID as string,
@@ -44,9 +45,7 @@ export const authOptions = {
       return session;
     },
   },
-};
+});
 
-// Define the Next.js route handlers for GET and POST requests
-const handler = NextAuth(authOptions);
-
+// Export GET and POST methods for handling requests
 export { handler as GET, handler as POST };
