@@ -1,0 +1,15 @@
+/* custom-tree.css */
+
+.node__root > text,
+.node__branch > text,
+.node__leaf > text {
+  fill: white; /* Set the text color to white */
+}
+
+.node_root > circle {
+    fill: rgb(255, 255, 255);
+    stroke: #e21717;
+}
+.rd3t-label {
+    translate: -100px 33px !important; font-size: 13px;
+}
