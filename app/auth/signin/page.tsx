@@ -5,15 +5,22 @@ import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export default function SignInPage() {
-  const { data: session, status } = useSession(); // Access session data and status
-  const [providers, setProviders] = useState<any>(null); // Store providers
-  const router = useRouter(); // Use Next.js router
+  const { data: session, status } = useSession();
+  const [providers, setProviders] = useState<any>(null);
+  const [loadingProviders, setLoadingProviders] = useState(true); 
+  const router = useRouter();
 
   // Fetch available providers on the client side
   useEffect(() => {
     const fetchProviders = async () => {
-      const res = await getProviders();
-      setProviders(res);
+      try {
+        const res = await getProviders();
+        setProviders(res);
+      } catch (error) {
+        console.error("Error fetching providers:", error);
+      } finally {
+        setLoadingProviders(false); 
+      }
     };
     fetchProviders();
   }, []);
@@ -22,21 +29,22 @@ export default function SignInPage() {
   useEffect(() => {
     const checkSubscriptionStatus = async () => {
       if (session?.user?.email) {
-        // Call API to check subscription status in Supabase
-        const response = await fetch("/api/check-subscription-status", {
-          method: "POST",
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: session.user.email }), // Send user email
-        });
+        try {
+          const response = await fetch("/api/check-subscription-status", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: session.user.email }),
+          });
 
-        const { isActive } = await response.json();
+          const { isActive } = await response.json();
 
-        // If subscription is active, redirect to /protected
-        if (isActive) {
-          router.push("/protected");
-        } else {
-          // Otherwise, redirect to the /subscription page
-          router.push("/log");
+          if (isActive) {
+            router.push("/protected");
+          } else {
+            router.push("/log");
+          }
+        } catch (error) {
+          console.error("Error checking subscription status:", error);
         }
       }
     };
@@ -47,22 +55,20 @@ export default function SignInPage() {
   }, [session, router]);
 
   // Display loading spinner while fetching providers or session
-  if (!providers || status === 'loading') {
+  if (loadingProviders || status === 'loading') {
     return (
       <div className="w-full h-screen items-center justify-center flex font-semibold text-7xl">
-        Clin<span className="animate-pulse text-zinc-500 text-7xl">Q</span>
+        Clin<span className="animate-pulse text-zinc-500">Q</span>
       </div>
     );
   }
 
-  // Render the login/sign-out buttons and the list of providers
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <h1 className="text-2xl font-semibold mb-6">
         {session ? `Welcome, ${session.user?.name}` : 'Sign in'}
       </h1>
 
-      {/* Show sign-out button if the user is signed in */}
       {session ? (
         <div className="mt-6">
           <p className="mb-4">Signed in as {session.user?.email}</p>
@@ -75,11 +81,10 @@ export default function SignInPage() {
         </div>
       ) : (
         <>
-          {/* Display available providers for signing in */}
           {providers && Object.values(providers).map((provider: any) => (
             <div key={provider.name} className="mb-4">
               <button
-                onClick={() => signIn(provider.id)}
+                onClick={() => signIn(provider.id, { callbackUrl: '/login' })} // Redirect to /login
                 className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
               >
                 Sign in with {provider.name}
@@ -87,10 +92,9 @@ export default function SignInPage() {
             </div>
           ))}
 
-          {/* Explicit Sign-in with GitHub button */}
           <div className="mt-6">
             <button
-              onClick={() => signIn("github")}
+              onClick={() => signIn("github", { callbackUrl: '/login' })} // Redirect to /login
               className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
             >
               Sign in with GitHub
