@@ -9,6 +9,7 @@ import { FooterCTA } from "./(website)/components/footer-cta";
 import { Footer } from "./(website)/components/footer";
 import { usePathname } from "next/navigation";
 import { SessionProvider } from "next-auth/react";
+import { Analytics } from "@vercel/analytics/react"
 
 export default function RootLayout({
   children,
@@ -27,6 +28,7 @@ export default function RootLayout({
       >
         {pathname === "/" ? (
           <main className="container mx-auto px-4 overflow-hidden md:overflow-visible">
+            <Analytics/>
             <Header />
             {children}
             <FooterCTA />
