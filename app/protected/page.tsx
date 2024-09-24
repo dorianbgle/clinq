@@ -8,7 +8,7 @@ export default async function ProtectedPage() {
 
   // If no session, redirect to the login page
   if (!session) {
-    redirect("/auth/signin"); // Redirect to the sign-in page if not authenticated
+    redirect("/signin"); // Redirect to the sign-in page if not authenticated
   }
 
   // If authenticated, render the protected content
