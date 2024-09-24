@@ -4,18 +4,27 @@ import Sidebar from "./components/sidebar";
 import { ThemeProvider } from "@/app/(dashboard)/components/theme-provider"
 import { IoExitSharp } from "react-icons/io5";
 import SignOutButton from "@/components/SignOutButton";
+import { getServerSession } from "next-auth/next";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "ClinQ | Dashboard",
   description: "Creating better physicians",
 };
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
 
+
+  const session = await getServerSession();
+
+  // If no session, redirect to the login page
+  if (!session) {
+    redirect("/signin"); // Redirect to the sign-in page if not authenticated
+  }
   return (
     <div className="relative">
                 <ThemeProvider
