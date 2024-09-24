@@ -3,6 +3,7 @@ import { Metadata } from "next/types";
 import Sidebar from "./components/sidebar";
 import { ThemeProvider } from "@/app/(dashboard)/components/theme-provider"
 import { IoExitSharp } from "react-icons/io5";
+import SignOutButton from "@/components/SignOutButton";
 
 export const metadata: Metadata = {
   title: "ClinQ | Dashboard",
@@ -29,9 +30,7 @@ export default function DashboardLayout({
           <div className="flex flex-col gap-3">
           <Sidebar />
           </div>
-          <div className="mb-5 p-3 hover:bg-yellow-800/50 border-yellow-600 hover:border active:scale-90 hover:text-yellow-600">
-          <IoExitSharp className="w-5 h-5"/>
-          </div>
+          <SignOutButton />
         </div>
       </nav>
       <div className="mx-4 md:ml-[95px] md:mr-10 pb-8">

@@ -1,14 +1,14 @@
 "use client";
 
 import { signOut } from "next-auth/react";
+import { IoExitSharp } from "react-icons/io5";
 
 const SignOutButton = () => {
   return (
-    <button
+    <button className="mb-5 p-3 hover:bg-yellow-800/50 border-yellow-600 hover:border active:scale-90 hover:text-yellow-600"
       onClick={() => signOut({ callbackUrl: "/auth/signin" })}
-      className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 mt-4"
     >
-      Sign Out
+        <IoExitSharp className="w-5 h-5"/>
     </button>
   );
 };
