@@ -9,7 +9,7 @@ import { SectionFour } from "./(website)/components/(homepage-components)/sectio
 
 export default function Home() {
   return (
-    <>
+    <main className="select-none">
       <Hero />
       <Screens />
       <SectionOne />
@@ -17,6 +17,6 @@ export default function Home() {
       <SectionThree />
       <SectionFour />
       {/* <Footer/> */}
-    </>
+    </main>
   );
 }
