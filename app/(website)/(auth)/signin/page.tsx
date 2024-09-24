@@ -43,15 +43,9 @@ export default function SignInPage() {
   return (
     <section className="items-center h-screen w-full">
       {session ? (
-        <div className="mt-6">
-          <p className="mb-4">Signed in as {session.user?.email}</p>
-          <button
-            onClick={() => signOut()}
-            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-          >
-            Sign out
-          </button>
-        </div>
+        <div className="w-full h-screen flex items-center justify-center font-semibold text-7xl">
+        Clin<span className="animate-pulse text-zinc-500 text-7xl">Q</span>
+      </div>
       ) : (
         <>
           <div>
