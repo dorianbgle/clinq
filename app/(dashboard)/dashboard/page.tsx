@@ -5,7 +5,7 @@ import { MdArrowRightAlt } from "react-icons/md";
 
 export default function DashBoard() {
   return (
-    <section className="flex flex-col w-full h-full p-5 gap-2 overflow-y-auto overflow-hidden select-none">
+    <section className="flex flex-col w-full h-full gap-2 overflow-y-auto overflow-hidden select-none p-3">
       {/* <div className="flex w-full ">
         <div className="flex justify-end items-end  w-full">
           <article className=" bg-zinc-950 items-center p-3 px-5 flex justify-center hover:border-zinc-600 border rounded-full delay-300 duration-150 ease-in-out">
@@ -15,7 +15,7 @@ export default function DashBoard() {
         </div>
       </div> */}
 
-      <article className="w-full px-7 p-5 large-dotted-bg md:h-96 h-96 flex flex-col justify-center md:justify-end overflow-clip relative border items-center md:items-start ">
+      <article className="w-full px-7 p-5 large-dotted-bg md:h-96 h-[75vh] flex flex-col justify-end overflow-clip relative border items-start ">
         <h3 className="text-black/30 md:text-[25rem] sm:-right-12 text-[14rem] font-bold text-end -right-20 md:-right-8 absolute md:-top-16 -z-10">
           ClinQ
         </h3>
