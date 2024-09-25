@@ -67,9 +67,8 @@ export function Hero() {
 
         <p className="text-xs text-[#707070] mt-8 font-mono">
           Used by{" "}
-          <Link href="/open-startup" prefetch>
             <span className="underline">internationally</span>
-          </Link>{" "}
+
           recognised medical schools.
         </p>
       </div>
