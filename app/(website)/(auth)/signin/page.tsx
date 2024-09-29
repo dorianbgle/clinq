@@ -34,8 +34,8 @@ export default function SignInPage() {
   // Handle loading UI while fetching session or providers
   if (loading || status === "loading") {
     return (
-      <div className="w-full h-screen flex items-center justify-center font-semibold text-7xl">
-        Clin<span className="animate-pulse text-zinc-500 text-7xl">Q</span>
+      <div className="w-full h-screen flex items-center justify-center font-semibold md:text-7xl text-5xl">
+        Clin<span className="animate-pulse text-zinc-500 md:text-7xl text-5xl">Q</span>
       </div>
     );
   }
@@ -43,8 +43,8 @@ export default function SignInPage() {
   return (
     <section className="items-center h-screen w-full">
       {session ? (
-        <div className="w-full h-screen flex items-center justify-center font-semibold text-7xl">
-        Clin<span className="animate-pulse text-zinc-500 text-7xl">Q</span>
+        <div className="w-full h-screen flex items-center justify-center font-semibold md:text-7xl text-5xl">
+        Clin<span className="animate-pulse text-zinc-500 md:text-7xl text-5xl">Q</span>
       </div>
       ) : (
         <>
