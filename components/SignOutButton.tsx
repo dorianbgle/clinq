@@ -2,9 +2,11 @@
 
 import { signOut } from "next-auth/react";
 import { IoExitSharp } from "react-icons/io5";
-import { toast } from "@/components/ui/use-toast"; // Adjust the path according to your setup
+import { useToast } from "@/hooks/use-toast"
+
 
 const SignOutButton = () => {
+  const { toast } = useToast()
   const handleSignOut = async () => {
     try {
       await signOut({ callbackUrl: "/auth/signin" });
@@ -15,7 +17,7 @@ const SignOutButton = () => {
     } catch (error) {
       toast({
         title: "Error",
-        description: "Failed to sign out. Please try again."
+        description: "Failed to sign out. Please try again.",
       });
     }
   };
