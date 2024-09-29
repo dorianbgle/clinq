@@ -6,6 +6,7 @@ import { IoExitSharp } from "react-icons/io5";
 import SignOutButton from "@/components/SignOutButton";
 import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
+import {Toaster} from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: "ClinQ | Dashboard",
@@ -45,6 +46,7 @@ export default async function DashboardLayout({
       <div className="mx-4 md:ml-[95px] md:mr-10 pb-8">
         <Header />
         {children}
+        <Toaster />
       </div>
       </ThemeProvider>
 
