@@ -2,23 +2,16 @@
 
 import { signOut } from "next-auth/react";
 import { IoExitSharp } from "react-icons/io5";
-import { useToast } from "@/hooks/use-toast"
-
 
 const SignOutButton = () => {
-  const { toast } = useToast()
   const handleSignOut = async () => {
     try {
+      // Set a flag in local storage to display the toast on the next page
+      localStorage.setItem("signOutToast", "true");
+      // Sign the user out and redirect to the sign-in page
       await signOut({ callbackUrl: "/auth/signin" });
-      toast({
-        title: "Signed out",
-        description: "You have successfully signed out."
-      });
     } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to sign out. Please try again.",
-      });
+      console.error("Error during sign out", error);
     }
   };
 

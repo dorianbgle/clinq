@@ -11,7 +11,9 @@ import { usePathname } from "next/navigation";
 import { SessionProvider } from "next-auth/react";
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import {Toaster} from "@/components/ui/toaster"
+
+import { useEffect } from "react";
+import { toast, Toaster } from 'react-hot-toast';
 
 export default function RootLayout({
   children,
@@ -19,6 +21,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
+  useEffect(() => {
+    // Check if the signOutToast flag is set in local storage
+    const showToast = localStorage.getItem("signOutToast");
+    if (showToast === "true") {
+      // Show the success toast
+      toast.success('You have successfully signed out.', {   style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#000000'}});
+      // Remove the flag from local storage after displaying the toast
+      localStorage.removeItem("signOutToast");
+    }
+  }, []);
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -36,12 +51,14 @@ export default function RootLayout({
             {children}
             <FooterCTA />
             <Footer />
-            <Toaster />
+            <Toaster position="bottom-right" reverseOrder={false} />
+           
           </main>
         ) : (
-          <><SessionProvider>{children}</SessionProvider></>
+          <><SessionProvider>{children}<Toaster position="top-center" reverseOrder={false} /></SessionProvider></>
         )}
       </body>
+
     </html>
   );
 }
