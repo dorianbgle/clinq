@@ -145,6 +145,7 @@ const SymptomDisplay = () => {
                 setIsFetching(true);
               }}
             >
+              {/* Consider adding concatenation here */}
               <div className="flex items-center space-x-3 px-5">
                 <p>{s.title}</p>
                 {fetchingItemId === s.id && (
