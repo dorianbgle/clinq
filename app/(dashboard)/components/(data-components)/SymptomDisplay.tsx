@@ -86,14 +86,14 @@ const SymptomDisplay = () => {
             />
             <label>High Yield Topics</label>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="md:flex items-center gap-2 hidden">
             <Switch
               checked={showSpecialty}
               onCheckedChange={() => setShowSpecialty(!showSpecialty)} // Corrected prop name
             />
             <label>Specialty</label>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="md:flex items-center gap-2 hidden">
             <Switch
               checked={showDifficulty}
               onCheckedChange={() => setShowDifficulty(!showDifficulty)} // Corrected prop name
@@ -196,6 +196,7 @@ const SymptomDisplay = () => {
                   </>
                 )}
 
+{/* Consider taking some of these out in the mobile view. */}
                 {showHighYield && s.symptomjson?.isHighYield && (
                   <p className="bg-red-950/80 rounded-xl border border-red-700 text-red-700 text-xs px-1">
                     High Yield

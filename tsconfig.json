@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "next.config.js", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "tailwind.config.ts", "app/thank-you/page.js"],
+  "include": ["next-env.d.ts", "next.config.js", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "tailwind.config.ts", "app/thank-you/page.js", "app/api/auth/[...nextauth]/route.js"],
   "exclude": ["node_modules"]
 }
