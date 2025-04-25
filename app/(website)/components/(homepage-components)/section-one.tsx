@@ -7,15 +7,15 @@ import 'aos/dist/aos.css';
 export function SectionOne() {
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Duration of the animation in milliseconds
+      duration: 1000, 
     });
   }, []);
 
   return (
     <section
       className="mt-24 md:mt-[200px] mb-12"
-      id="overview"
-      data-aos="fade-right" // Add AOS animation attribute here
+      data-aos="fade-right"
+      id="approaches"
     >
       <h3 className="text-4xl md:text-8xl font-medium">Case-based approach</h3>
       <p className="mt-4 md:mt-8 text-[#878787]">

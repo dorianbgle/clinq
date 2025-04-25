@@ -4,27 +4,18 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import menuAssistant from "@/public/menu-assistant.jpg";
+import condtionSearch from "@/public/condition-search.jpg";
 import { useState } from "react";
 import { FaBookOpen } from "react-icons/fa";
-import {
-  MdChangeCircle,
-  MdOutlineChecklist
-} from "react-icons/md";
+import { MdOutlineChecklist } from "react-icons/md";
 import { cn } from "@/packages/lib/utils";
-import {
-  ContextMenu,
-  ContextMenuContent,
-  ContextMenuItem,
-  ContextMenuTrigger,
-} from "@/components/ui/context-menu";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { BarChart, Palette } from "lucide-react";
+import { BarChart } from "lucide-react";
 import { BsQuestion } from "react-icons/bs";
 import { FaUserDoctor } from "react-icons/fa6";
 import { GoBriefcase } from "react-icons/go";
@@ -74,8 +65,8 @@ export function Header() {
     {
       title: "Features",
       cover: (
-        <Link href="/#assistant" onClick={handleOnClick}>
-          <Image alt="Assistant" src={menuAssistant} quality={100} />
+        <Link href="#overview" onClick={handleOnClick}>
+          <Image alt="ConditionSearch" src={condtionSearch} quality={100} />
         </Link>
       ),
       children: [
@@ -85,17 +76,17 @@ export function Header() {
           icon: <BarChart size={20} />,
         },
         {
-          path: "/approachguide",
+          path: "#approaches",
           title: "Approaches",
           icon: <FaBookOpen size={20} />,
         },
         {
-          path: "/checklistguide",
+          path: "#checklists",
           title: "Checklists",
           icon: <MdOutlineChecklist size={20} />,
         },
         {
-          path: "/caseguide",
+          path: "#cases",
           title: "Cases",
           icon: <FaUserDoctor size={20} />,
         },
@@ -109,7 +100,7 @@ export function Header() {
     {
       title: "Pricing",
       path: "/pricing",
-    }
+    },
   ];
 
   if (pathname.includes("pitch")) {
@@ -125,14 +116,14 @@ export function Header() {
       )}
     >
       <nav className="border border-border px-4 flex items-center backdrop-filter backdrop-blur-xl bg-zinc-950 bg-opacity-70 h-[50px] z-20">
-            <Link href="/">
-              <Link
-                className="text-4xl p-3 bg-gradient-to-r from-zinc-200 via-zinc-400 to-zinc-200 inline-block text-transparent bg-clip-text font-medium"
-                href={"/"}
-              >
-                ClinQ
-              </Link>
-            </Link>
+        <Link href="/">
+          <Link
+            className="text-4xl p-3 bg-gradient-to-r from-zinc-200 via-zinc-400 to-zinc-200 inline-block text-transparent bg-clip-text font-medium"
+            href={"/"}
+          >
+            ClinQ
+          </Link>
+        </Link>
 
         <ul className="space-x-2 font-medium text-sm hidden md:flex mx-3">
           {links.map(({ path, title, children, cover }) => {

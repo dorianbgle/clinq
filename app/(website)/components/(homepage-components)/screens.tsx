@@ -8,16 +8,19 @@ import { CardStack } from "../card-stack";
 
 export function Screens() {
   return (
-    <div className="mt-20 md:mt-[250px] relative pt-12 pb-16">
+    <div className="mt-20 md:mt-[250px] relative pt-12 pb-16" id="overview">
       <div className="relative z-10 flex flex-col items-center">
         <div className="text-center pb-14">
-          <h3 className="text-4xl md:text-6xl font-medium">Modeling Real-world Scenarios</h3>
+          <h3 className="text-4xl md:text-6xl font-medium">
+            Modeling Real-world Scenarios
+          </h3>
           <p className="mt-4 text-[#878787]">
-            Bridging the gap between textbook knowledge and real-world scenarios.
+            Bridging the gap between textbook knowledge and real-world
+            scenarios.
           </p>
         </div>
-  
-  {/* Appears to be no error present, follow up. Item passed down as a JSON Object. Look at this closer. */}
+
+        {/* Appears to be no error present, follow up. Item passed down as a JSON Object. Look at this closer. */}
 
         <CardStack
           items={[

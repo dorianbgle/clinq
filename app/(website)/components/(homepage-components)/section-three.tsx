@@ -3,7 +3,7 @@ import timetracker from "../../../../public/time-tracker.png";
 
 export function SectionThree() {
   return (
-    <section className="relative mb-12">
+    <section className="relative mb-12" id="checklists">
       <div className="border border-border container bg-zinc-950 p-8 md:p-10 md:pb-0 overflow-hidden">
         <div className="flex flex-col md:space-x-12 md:flex-row">
           <div className="mt-6 md:max-w-[40%] md:mr-8 md:mb-8">

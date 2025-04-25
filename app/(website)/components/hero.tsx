@@ -1,8 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { cn } from "../../../packages/lib/utils";
-import Spline from "@splinetool/react-spline";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -68,27 +66,10 @@ export function Hero() {
         <p className="text-xs text-[#707070] mt-8 font-mono">
           Used by{" "}
             <span className="underline">internationally</span>
-
+&nbsp;a
           recognised medical schools.
         </p>
       </div>
-
-      {/* Consider importing later on */}
-
-      {/* <div className="scale-50 md:scale-100 -top-[500px] -right-[380px] pointer-events-none transform-gpu grayscale md:flex lg:animate-[open-scale-up-fade_1.5s_ease-in-out] absolute md:-right-[200px] xl:-right-[100px] w-auto h-auto md:-top-[200px]">
-        <div className={cn(isPlaying && "animate-webgl-scale-in-fade")}>
-          {isPlaying && (
-            <Spline
-              scene="https://prod.spline.design/HAMm7mSDmXF4PVqs/scene.splinecode"
-              style={{
-                width: "auto",
-                height: "auto",
-                background: "transparent",
-              }}
-            />
-          )}
-        </div>
-      </div> */}
     </motion.section>
   );
 }
