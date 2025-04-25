@@ -3,7 +3,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "ClinQ - Checklists",
   description:
-    "Don’t waste time searching through old emails and random folders. Keep all your contracts, agreements and more safe in one place.",
+    "Don't waste time checklists for phsyical examinations and history taking. Use our pre-made checklists to practice.",
 };
 
 const Page = () => {
@@ -20,7 +20,7 @@ const Page = () => {
 
         <div className="flex items-center flex-col text-center relative">
           <p className="text-lg mt-4 max-w-[600px]">
-            Don’t waste time making checklists to practise. Spend more time
+            Don&apos;t waste time making checklists to practise. Spend more time
             practising our pre-made checklists.
           </p>
         </div>

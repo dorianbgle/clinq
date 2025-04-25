@@ -5,15 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import menuAssistant from "@/public/menu-assistant.jpg";
-import menuEngine from "@/public/menu-engine.png";
 import { useState } from "react";
 import { FaBookOpen, FaDiscord, FaGithub } from "react-icons/fa";
 import {
   MdChangeCircle,
-  MdOutlineChecklist,
-  MdOutlineDescription,
-  MdOutlineIntegrationInstructions,
-  MdOutlineMemory,
+  MdOutlineChecklist
 } from "react-icons/md";
 import { cn } from "@/packages/lib/utils";
 import {
@@ -29,7 +25,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { BarChart, Palette } from "lucide-react";
-import { BsQuestion, } from "react-icons/bs";
+import { BsQuestion } from "react-icons/bs";
 import { FaUserDoctor } from "react-icons/fa6";
 import { GoBriefcase } from "react-icons/go";
 
@@ -113,46 +109,7 @@ export function Header() {
     {
       title: "Pricing",
       path: "/pricing",
-    },
-    {
-      title: "Story",
-      path: "/story",
-    },
-    {
-      title: "Students",
-      cover: (
-        <Link href="/engine" onClick={handleOnClick}>
-          <Image alt="Engine" src={menuEngine} quality={100} />
-        </Link>
-      ),
-      children: [
-        {
-          path: "https://git.new/midday",
-          title: "Open Source",
-          icon: <FaGithub size={19} />,
-        },
-        {
-          path: "https://docs.midday.ai",
-          title: "Documentation",
-          icon: <MdOutlineDescription size={20} />,
-        },
-        {
-          path: "/engine",
-          title: "Engine",
-          icon: <MdOutlineMemory size={20} />,
-        },
-        {
-          title: "Join the community",
-          path: "https://go.midday.ai/anPiuRx",
-          icon: <FaDiscord size={19} />,
-        },
-        {
-          title: "Apps & Integrations",
-          path: "https://docs.midday.ai",
-          icon: <MdOutlineIntegrationInstructions size={20} />,
-        },
-      ],
-    },
+    }
   ];
 
   if (pathname.includes("pitch")) {
