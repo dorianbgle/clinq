@@ -1,8 +1,8 @@
 'use client';  // For Next.js 13+ with RSC
 
-import { useEffect, useState } from 'react';
-import supabase from '../../packages/lib/supabase/client';
-import { stripePromise } from '../../packages/lib/stripeClient';
+import { useState } from 'react';
+import supabase from '../../../packages/lib/supabase/client';
+import { stripePromise } from '../../../packages/lib/stripeClient';
 
 const Register = () => {
   const [loading, setLoading] = useState(false);
