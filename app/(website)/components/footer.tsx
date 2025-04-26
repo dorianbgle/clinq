@@ -30,12 +30,12 @@ export function Footer() {
             ClinQ
           </Link>
 
-          <span className="md:text-2xl text-right">Study medicine smarter</span>
+          <span className="md:text-xl text-right">Study medicine smarter</span>
         </div>
 
         <div className="flex flex-col md:flex-row w-full">
           <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:w-6/12 justify-between leading-8">
-            <>
+            <span>
               <h3 className="font-medium">Features</h3>
               <ul>
                 <li className="transition-colors text-[#878787]">
@@ -57,9 +57,9 @@ export function Footer() {
                   <Link href="#pricing">Pricing</Link>
                 </li>
               </ul>
-            </>
+            </span>
 
-            <>
+            <span>
               <h3>Resources</h3>
               <ul>
                 <li className="transition-colors text-[#878787]">
@@ -69,16 +69,16 @@ export function Footer() {
                   <Link href="/terms-and-conditions">Terms and Conditions</Link>
                 </li>
               </ul>
-            </>
+            </span>
 
-            <>
+            <span>
               <h3>Company</h3>
               <ul>
                 <li className="transition-colors text-[#878787]">
                   <Link href="/intro-about">About us</Link>
                 </li>
               </ul>
-            </>
+            </span>
           </div>
 
           <div className="md:w-6/12 flex mt-8 md:mt-0 md:justify-end">

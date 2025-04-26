@@ -1,37 +1,34 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import { signIn, useSession, getProviders } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { FcGoogle } from "react-icons/fc"; // Google icon
-import { FaGithub } from "react-icons/fa"; // GitHub icon
+import { FcGoogle } from "react-icons/fc"; 
+import { FaGithub } from "react-icons/fa"; 
 
 export default function SignInPage() {
-  const { data: session, status } = useSession(); // Access the session data and status
+  const { data: session, status } = useSession(); 
   const [providers, setProviders] = useState<any>(null);
-  const [loading, setLoading] = useState(true); // Loading state
+  const [loading, setLoading] = useState(true); 
   const router = useRouter();
 
-  // Fetch providers on the client side
   useEffect(() => {
     const fetchProviders = async () => {
       const res = await getProviders();
       setProviders(res);
-      setLoading(false); // Stop loading once providers are fetched
+      setLoading(false);
     };
     fetchProviders();
   }, []);
 
-  // Check if the user is signed in and redirect to protected page
   useEffect(() => {
     if (session) {
-      router.push("/dashboard"); // Redirect to protected dashboard page if logged in
+      router.push("/dashboard");
     }
   }, [session, router]);
 
-  // Handle loading UI while fetching session or providers
   if (loading || status === "loading") {
     return (
       <div className="w-full h-screen flex items-center justify-center font-semibold md:text-7xl text-5xl">
@@ -75,7 +72,8 @@ export default function SignInPage() {
                     and effortless.
                   </p>
                   <div className="pointer-events-auto mt-6 flex flex-col mb-6 gap-1">
-                    {/* Display all available providers */}
+
+                {/* Display all providers */}
                     {providers &&
                       Object.values(providers).map((provider: any) => (
                         <div key={provider.name} className="mb-4">
@@ -84,8 +82,8 @@ export default function SignInPage() {
                             className="items-center gap-2 w-full flex hover:bg-zinc-500"
                             variant="outline"
                           >
-                            {provider.name === "Google" && <FcGoogle />} {/* Google Icon */}
-                            {provider.name === "GitHub" && <FaGithub />} {/* GitHub Icon */}
+                            {provider.name === "Google" && <FcGoogle />} 
+                            {provider.name === "GitHub" && <FaGithub />} 
                             Sign in with {provider.name}
                           </Button>
                         </div>
@@ -95,11 +93,11 @@ export default function SignInPage() {
                   <p className="text-xs text-[#878787]">
                     By clicking continue, you acknowledge that you have read and
                     agree to ClinQ&apos;s{" "}
-                    <a href="/terms" className="underline">
+                    <a href="/terms-and-conditions" className="underline">
                       Terms of Service
                     </a>{" "}
                     and{" "}
-                    <a href="/policy" className="underline">
+                    <a href="/privacy-policy" className="underline">
                       Privacy Policy
                     </a>
                     .
