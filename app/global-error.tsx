@@ -18,7 +18,7 @@ export default function Error({
   return (
     <main className="w-full h-screen justify-center items-center flex flex-col dotted-bg">
       <section className="flex flex-col w-2/3 items-start">
-        <h2 className="text-6xl font-semibold">Sorry :(</h2>
+        <h2 className="text-6xl font-semibold">Sorry :{')'}</h2>
         <h2 className="text-3xl">We couldn&apos;t find that page</h2>
         <h2 className="text-base">
           Try visting our{" "}

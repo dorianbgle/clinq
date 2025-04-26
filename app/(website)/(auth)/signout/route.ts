@@ -8,7 +8,6 @@ export async function POST(req: NextRequest) {
   const supabase = createClient()
   alert("Penis")
 
-  // Check if a user's logged in
   const {
     data: { user },
   } = await supabase.auth.getUser()
