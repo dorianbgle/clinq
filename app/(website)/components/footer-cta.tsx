@@ -12,9 +12,9 @@ export function FooterCTA() {
 
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Duration of the animation in milliseconds
-      easing: "ease-out", // Easing function for the animation
-      once: true, // Whether animation should happen only once or every time you scroll up and down
+      duration: 1000, 
+      easing: "ease-out", 
+      once: true,
     });
   }, []);
 
@@ -26,7 +26,7 @@ export function FooterCTA() {
     <div className="border border-border md:container text-center px-10 py-14 mx-4 md:mx-auto md:px-24 md:py-20 mb-32 mt-24 flex items-center flex-col bg-[#121212]">
       <span
         className="text-6xl md:text-8xl font-medium text-white"
-        data-aos="fade" // Changed to "fade" for simple fade-in effect
+        data-aos="fade" 
       >
         Study smarter with ClinQ.
       </span>

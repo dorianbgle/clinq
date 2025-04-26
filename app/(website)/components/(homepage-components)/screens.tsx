@@ -20,8 +20,6 @@ export function Screens() {
           </p>
         </div>
 
-        {/* Appears to be no error present, follow up. Item passed down as a JSON Object. Look at this closer. */}
-
         <CardStack
           items={[
             {

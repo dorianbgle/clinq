@@ -72,9 +72,6 @@ export function Footer() {
                 <li className="transition-colors text-[#878787]">
                   <Link href="/terms">Terms and Conditions</Link>
                 </li>
-                <li className="transition-colors text-[#878787]">
-                  <Link href="/feature-request">Feature Request</Link>
-                </li>
               </ul>
             </>
 
@@ -82,10 +79,7 @@ export function Footer() {
               <h3>Company</h3>
               <ul>
                 <li className="transition-colors text-[#878787]">
-                  <Link href="/story">Story</Link>
-                </li>
-                <li className="transition-colors text-[#878787]">
-                  <Link href="/open-startup">Open startup</Link>
+                  <Link href="/story">About us</Link>
                 </li>
               </ul>
             </>
