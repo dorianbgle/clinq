@@ -28,10 +28,10 @@ export function Hero() {
     >
       <div className="hero-slide-up flex flex-col mt-[240px]">
         <div>
-          <div
-            className="rounded-full flex space-x-2 items-center "
-          >
-            <span className="font-mono text-xs border border-zinc-700 p-2 rounded-2xl">Currently in Beta</span>
+          <div className="rounded-full flex space-x-2 items-center ">
+            <span className="font-mono text-xs border border-zinc-700 p-2 rounded-2xl">
+              Currently in Beta
+            </span>
           </div>
         </div>
 
@@ -64,10 +64,8 @@ export function Hero() {
         </div>
 
         <p className="text-xs text-[#707070] mt-8 font-mono">
-          Used by{" "}
-            <span className="underline">internationally</span>
-&nbsp;a
-          recognised medical schools.
+          Used by <span className="underline">internationally</span>
+          &nbsp; recognised medical schools.
         </p>
       </div>
     </motion.section>

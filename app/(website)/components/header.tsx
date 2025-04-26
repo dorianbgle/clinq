@@ -77,21 +77,21 @@ export function Header() {
         },
         {
           path: "#approaches",
-          title: "Approaches",
+          title: "Approach Guide",
           icon: <FaBookOpen size={20} />,
         },
         {
           path: "#checklists",
-          title: "Checklists",
+          title: "Pre-made Checklists",
           icon: <MdOutlineChecklist size={20} />,
         },
         {
           path: "#cases",
-          title: "Cases",
+          title: "Case Files",
           icon: <FaUserDoctor size={20} />,
         },
         {
-          path: "/simulationguide",
+          path: "#simulations",
           title: "Hospital Simulation",
           icon: <GoBriefcase size={20} />,
         },

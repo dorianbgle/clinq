@@ -13,9 +13,9 @@ export function Footer() {
 
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Duration of the animation in milliseconds
-      easing: "ease-out", // Easing function for the animation
-      once: true, // Whether animation should happen only once or every time you scroll up and down
+      duration: 1000,
+      easing: "ease-out", 
+      once: true, 
     });
   }, []);
 
@@ -36,32 +36,32 @@ export function Footer() {
 
         <div className="flex flex-col md:flex-row w-full">
           <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:w-6/12 justify-between leading-8">
-            <div>
-              <span className="font-medium">Features</span>
+            <>
+              <h3 className="font-medium">Features</h3>
               <ul>
                 <li className="transition-colors text-[#878787]">
-                  <Link href="/overview">Overview</Link>
+                  <Link href="#overview">Overview</Link>
                 </li>
                 <li className="transition-colors text-[#878787]">
-                  <Link href="/approachguide">Symptom Guide</Link>
+                  <Link href="#approaches">Approach Guide</Link>
                 </li>
                 <li className="transition-colors text-[#878787]">
-                  <Link href="/checklistguide">Checklists</Link>
+                  <Link href="#checklists">Pre-made Checklists</Link>
                 </li>
                 <li className="transition-colors text-[#878787]">
-                  <Link href="/caseguide">Case Files</Link>
+                  <Link href="#cases">Case Files</Link>
                 </li>
                 <li className="transition-colors text-[#878787]">
-                  <Link href="/longcaseguide">Long Stay Cases</Link>
+                  <Link href="#simulations">Hospital Simulations</Link>
                 </li>
                 <li className="transition-colors text-[#878787]">
-                  <Link href="/pricing">Pricing</Link>
+                  <Link href="#pricing">Pricing</Link>
                 </li>
               </ul>
-            </div>
+            </>
 
-            <div>
-              <span>Resources</span>
+            <>
+              <h3>Resources</h3>
               <ul>
                 <li className="transition-colors text-[#878787]">
                   <Link href="/support">Support</Link>
@@ -76,10 +76,10 @@ export function Footer() {
                   <Link href="/feature-request">Feature Request</Link>
                 </li>
               </ul>
-            </div>
+            </>
 
-            <div>
-              <span>Company</span>
+            <>
+              <h3>Company</h3>
               <ul>
                 <li className="transition-colors text-[#878787]">
                   <Link href="/story">Story</Link>
@@ -88,7 +88,7 @@ export function Footer() {
                   <Link href="/open-startup">Open startup</Link>
                 </li>
               </ul>
-            </div>
+            </>
           </div>
 
           <div className="md:w-6/12 flex mt-8 md:mt-0 md:justify-end">
