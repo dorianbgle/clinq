@@ -1,4 +1,3 @@
-// pages/api/stripe-webhook.js
 import { buffer } from 'micro';
 import Stripe from 'stripe';
 import { supabase } from '../../lib/supabaseClient';

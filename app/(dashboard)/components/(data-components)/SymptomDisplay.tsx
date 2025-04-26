@@ -5,7 +5,7 @@ import supabase from "@/packages/lib/supabase/client";
 import { useEffect, useState } from "react";
 import { FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Switch } from "@/components/ui/switch"; // Ensure this import is correct
+import { Switch } from "@/components/ui/switch"; 
 
 export const revalidate = 60;
 
@@ -23,8 +23,8 @@ const SymptomDisplay = () => {
     | null
   >(null);
   const [loading, setLoading] = useState(false);
-  const [fetchingItemId, setFetchingItemId] = useState<string | null>(null); // Track the ID being fetched
-  const [isFetching, setIsFetching] = useState(false); // Track if any item is being fetched
+  const [fetchingItemId, setFetchingItemId] = useState<string | null>(null); 
+  const [isFetching, setIsFetching] = useState(false); 
   const [page, setPage] = useState(0);
   const [query, setQuery] = useState("");
   const [showHighYield, setShowHighYield] = useState(true);
@@ -48,7 +48,7 @@ const SymptomDisplay = () => {
   const getFromandTo = () => {
     const ITEMSPERPAGE = 10;
     let from = page * ITEMSPERPAGE;
-    let to = from + ITEMSPERPAGE; // Corrected this line
+    let to = from + ITEMSPERPAGE; 
     return { from, to };
   };
 
@@ -58,7 +58,7 @@ const SymptomDisplay = () => {
 
   let arr = filteredItems?.slice();
   let { from, to } = getFromandTo();
-  let displayedResults = arr?.slice(from, to); // Adjusted logic ensures proper display range
+  let displayedResults = arr?.slice(from, to); 
 
   let maxPages = Math.ceil((filteredItems?.length ?? 0) / 10);
 
@@ -71,32 +71,30 @@ const SymptomDisplay = () => {
 
   return (
     <>
-      {/* Switches to toggle visibility */}
       <span className="py-5 gap-2 flex flex-col select-none">
         <h1 className="text-2xl">Approaches</h1>
         <h3 className="text-zinc-500">
           Study our approaches section to formulate your own approach to each symptom
         </h3>
-         {/* Visibility control switches */}
          <section className="flex gap-4 text-sm justify-end text-zinc-500 items-center py-2">
           <div className="flex items-center gap-2">
             <Switch
               checked={showHighYield}
-              onCheckedChange={() => setShowHighYield(!showHighYield)} // Corrected prop name
+              onCheckedChange={() => setShowHighYield(!showHighYield)} 
             />
             <label>High Yield Topics</label>
           </div>
           <div className="md:flex items-center gap-2 hidden">
             <Switch
               checked={showSpecialty}
-              onCheckedChange={() => setShowSpecialty(!showSpecialty)} // Corrected prop name
+              onCheckedChange={() => setShowSpecialty(!showSpecialty)} 
             />
             <label>Specialty</label>
           </div>
           <div className="md:flex items-center gap-2 hidden">
             <Switch
               checked={showDifficulty}
-              onCheckedChange={() => setShowDifficulty(!showDifficulty)} // Corrected prop name
+              onCheckedChange={() => setShowDifficulty(!showDifficulty)}
             />
             <label>Difficulty</label>
           </div>
@@ -145,7 +143,6 @@ const SymptomDisplay = () => {
                 setIsFetching(true);
               }}
             >
-              {/* Consider adding concatenation here */}
               <div className="flex items-center space-x-3 px-5">
                 <p>{s.title}</p>
                 {fetchingItemId === s.id && (
@@ -197,7 +194,6 @@ const SymptomDisplay = () => {
                   </>
                 )}
 
-{/* Consider taking some of these out in the mobile view. */}
                 {showHighYield && s.symptomjson?.isHighYield && (
                   <p className="bg-red-950/80 rounded-xl border border-red-700 text-red-700 text-xs px-1">
                     High Yield
