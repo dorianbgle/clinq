@@ -10,18 +10,6 @@ import {
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-
-// Find cause of error. 
-// 2 objects present - Interval and Card. Three objects passed into component - items, offset and scaleFactor. 
-// Various objects defined within function. isDesktop, CARD_OFFSET, SCALE_FACTOR and the state cards. 
-// Each card has an id, content and array. The state cards is an array of the card. 
-// On render, the startFlipping() function is called and state is called which sets the cards tp the items. 
-// Follow up where these objects/attributes are passed down from. 
-// 3 main functions are defined within the function. startFlipping(), onChangeCardIndex() and onChangeCard().
-// Use ChatGPT to explain some of these lines of code. Make a simplified version of the code. 
-// Pay anttention to Overview, Transactions, Inbox, Tracker and Vault.
-// Answer where does this component fit in - it is exported into the page.tsx file but has all of these components. 
-
 let interval: any;
 
 type Card = {
@@ -56,8 +44,8 @@ export const CardStack = ({
   const startFlipping = () => {
     interval = setInterval(() => {
       setCards((prevCards: Card[]) => {
-        const newArray = [...prevCards]; // create a copy of the array
-        newArray.unshift(newArray.pop()!); // move the last element to the front
+        const newArray = [...prevCards]; 
+        newArray.unshift(newArray.pop()!);
         return newArray;
       });
     }, 5000);
@@ -92,7 +80,7 @@ export const CardStack = ({
               display: index > 2 ? "none" : "block",
             }}
             whileHover={{
-              y: index > 0 ? -30 : 0, // Example hover effect
+              y: index > 0 ? -30 : 0,
               transition: { duration: 0.3 },
             }}
             animate={{

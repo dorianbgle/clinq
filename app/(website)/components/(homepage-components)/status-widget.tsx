@@ -1,25 +1,10 @@
 "use client";
 
-// import { fetchStatus } from "@/actions/fetch-status";
 import { cn } from "../../../../packages/lib/utils";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export function StatusWidget() {
   const [status, setStatus] = useState("operational");
-
-//   useEffect(() => {
-//     async function fetchData() {
-//       try {
-//         // const response = await fetchStatus();
-
-//         if (response) {
-//           setStatus(response);
-//         }
-//       } catch {}
-//     }
-
-//     fetchData();
-//   }, []);
 
 const getStatusLevel = (level: string) => {
     return {
@@ -68,11 +53,8 @@ const level = getStatusLevel(status);
   }
 
   return (
-    <a
+    <h3
       className="flex justify-between space-x-2 items-center w-full border border-border rounded-full px-3 py-1.5"
-      href="https://midday.openstatus.dev"
-      target="_blank"
-      rel="noreferrer"
     >
       <div>
         <p className="text-xs font-mono">{level.label}</p>
@@ -92,6 +74,6 @@ const level = getStatusLevel(status);
           )}
         />
       </span>
-    </a>
+    </h3>
   );
 }

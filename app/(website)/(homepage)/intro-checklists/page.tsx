@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+import { Link } from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -38,6 +40,12 @@ const Page = () => {
           </p>
         </div>
       </div>
+
+      <Link href="/dashboard">
+        <Button className="h-12 px-5 bg-white text-black hover:bg-white/80">
+          Get Started
+        </Button>
+      </Link>
     </div>
   );
 };

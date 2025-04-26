@@ -1,4 +1,3 @@
-// pages/checkout.js
 import { stripePromise } from '../lib/stripeClient';
 import { supabase } from '../lib/supabaseClient';
 import { useState } from 'react';

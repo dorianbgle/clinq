@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { SubscribeInput } from "./subscribe-input";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { StatusWidget } from "./(homepage-components)/status-widget";
@@ -64,13 +63,10 @@ export function Footer() {
               <h3>Resources</h3>
               <ul>
                 <li className="transition-colors text-[#878787]">
-                  <Link href="/support">Support</Link>
+                  <Link href="/privacy-policy">Privacy policy</Link>
                 </li>
                 <li className="transition-colors text-[#878787]">
-                  <Link href="/policy">Privacy policy</Link>
-                </li>
-                <li className="transition-colors text-[#878787]">
-                  <Link href="/terms">Terms and Conditions</Link>
+                  <Link href="/terms-and-conditions">Terms and Conditions</Link>
                 </li>
               </ul>
             </>
@@ -79,7 +75,7 @@ export function Footer() {
               <h3>Company</h3>
               <ul>
                 <li className="transition-colors text-[#878787]">
-                  <Link href="/story">About us</Link>
+                  <Link href="/intro-about">About us</Link>
                 </li>
               </ul>
             </>
@@ -87,9 +83,6 @@ export function Footer() {
 
           <div className="md:w-6/12 flex mt-8 md:mt-0 md:justify-end">
             <div className="flex md:items-end flex-col">
-              <div className="mb-8">
-                <SubscribeInput group="news" />
-              </div>
               <div className="md:mr-0 mt-auto mr-auto">
                 <StatusWidget />
               </div>
@@ -100,7 +93,7 @@ export function Footer() {
 
       <h5
         className="text-[#161616] text-[500px] leading-none text-center pointer-events-none font-bold"
-        data-aos="fade-up" // Apply AOS animation here
+        data-aos="fade-up"
       >
         ClinQ
       </h5>

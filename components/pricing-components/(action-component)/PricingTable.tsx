@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useEffect } from 'react';
-// If using TypeScript, add the following snippet to your file as well.
+
 declare global {
     namespace JSX {
       interface IntrinsicElements {

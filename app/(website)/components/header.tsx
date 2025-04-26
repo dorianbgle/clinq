@@ -76,12 +76,12 @@ export function Header() {
           icon: <BarChart size={20} />,
         },
         {
-          path: "#approaches",
+          path: "/intro-approaches",
           title: "Approach Guide",
           icon: <FaBookOpen size={20} />,
         },
         {
-          path: "#checklists",
+          path: "/intro-checklists",
           title: "Pre-made Checklists",
           icon: <MdOutlineChecklist size={20} />,
         },

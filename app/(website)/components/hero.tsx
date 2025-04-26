@@ -65,7 +65,7 @@ export function Hero() {
 
         <p className="text-xs text-[#707070] mt-8 font-mono">
           Used by <span className="underline">internationally</span>
-          &nbsp; recognised medical schools.
+          &nbsp;recognised medical schools.
         </p>
       </div>
     </motion.section>
